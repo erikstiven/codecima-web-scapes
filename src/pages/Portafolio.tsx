@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Layout from '@/components/layout/Layout';
+import { motion } from 'framer-motion';
 
 const Portafolio = () => {
   const projects = [
@@ -42,11 +43,38 @@ const Portafolio = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100
+      }
+    }
+  };
+
   return (
     <Layout>
       <section className="pt-28 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <h1 className="text-4xl font-bold mb-4">
               <span className="text-white">Nuestro </span>
               <span className="text-codecima-blue">Portafolio</span>
@@ -54,31 +82,40 @@ const Portafolio = () => {
             <p className="text-gray-300 max-w-2xl mx-auto">
               Descubre algunos de nuestros casos de éxito implementando soluciones tecnológicas para empresas de transporte.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {projects.map((project, index) => (
-              <div key={index} className="bg-codecima-darkblue/50 rounded-lg overflow-hidden border border-codecima-blue/10 hover:border-codecima-blue/30 transition-all group">
+              <motion.div 
+                key={index} 
+                className="bg-codecima-darkblue/70 rounded-lg overflow-hidden border border-codecima-blue/10 hover:border-codecima-blue/30 transition-all group"
+                variants={itemVariants}
+              >
                 <div className="relative">
                   <div className="aspect-w-16 aspect-h-9 overflow-hidden">
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <div className="absolute top-4 right-4 bg-codecima-blue text-white text-xs font-medium px-2 py-1 rounded">
+                  <div className="absolute top-4 right-4 bg-codecima-blue text-white text-xs font-medium px-3 py-1 rounded-full">
                     {project.category}
                   </div>
                 </div>
                 
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                  <p className="text-gray-400">{project.description}</p>
+                  <p className="text-gray-400 text-sm">{project.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </Layout>

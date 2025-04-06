@@ -17,7 +17,7 @@ const ContactForm: React.FC = () => {
         <div className="flex items-center bg-codecima-darkblue/50 border border-gray-700 rounded px-4 py-3">
           <Mail className="text-codecima-lightblue mr-2" size={20} />
           <input
-            type="email"
+            type="text"
             placeholder="Escribe tu nombre"
             className="bg-transparent w-full text-gray-300 placeholder-gray-500 focus:outline-none"
           />
@@ -45,7 +45,7 @@ const ContactForm: React.FC = () => {
           <Monitor className="text-codecima-lightblue mr-2" size={20} />
           <input
             type="text"
-            placeholder="Escribe tu ROC o RUT"
+            placeholder="Escribe tu RUC o NIT"
             className="bg-transparent w-full text-gray-300 placeholder-gray-500 focus:outline-none"
           />
         </div>
