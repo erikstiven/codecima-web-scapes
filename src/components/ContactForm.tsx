@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Phone, Mail, Desktop, ChevronDown } from 'lucide-react';
+import { Phone, Mail, Monitor, ChevronDown } from 'lucide-react';
 
 const ContactForm: React.FC = () => {
   const [selectedSoftware, setSelectedSoftware] = useState('');
@@ -42,7 +42,7 @@ const ContactForm: React.FC = () => {
         </div>
         
         <div className="flex items-center bg-codecima-darkblue/50 border border-gray-700 rounded px-4 py-3">
-          <Desktop className="text-codecima-lightblue mr-2" size={20} />
+          <Monitor className="text-codecima-lightblue mr-2" size={20} />
           <input
             type="text"
             placeholder="Escribe tu ROC o RUT"
