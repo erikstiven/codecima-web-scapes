@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Play } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ContactForm from '../ContactForm';
 
 const Hero = () => {
@@ -8,9 +9,14 @@ const Hero = () => {
     <section className="pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-purple-500">
-              Software <br/>
+          <motion.div 
+            className="space-y-6"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <h1 className="text-4xl md:text-5xl font-bold">
+              <span className="text-purple-500">Software</span> <br/>
               <span className="text-white">Personalizado</span>
             </h1>
             <p className="text-gray-300 text-lg">
@@ -20,11 +26,15 @@ const Hero = () => {
               <Play size={16} className="mr-2" />
               <span>Ver Video</span>
             </button>
-          </div>
+          </motion.div>
           
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
             <ContactForm />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

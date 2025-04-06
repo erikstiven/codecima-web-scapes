@@ -3,10 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import CallToAction from '@/components/home/CallToAction';
 
 const Portafolio = () => {
   const categories = [
@@ -125,35 +123,28 @@ const Portafolio = () => {
             </p>
           </motion.div>
 
-          {/* Category filters */}
+          {/* Category filters - updated to match the design */}
           <motion.div 
             className="flex justify-center mb-12 overflow-x-auto pb-2 hide-scrollbar"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <ToggleGroup 
-              type="single" 
-              value={activeCategory}
-              onValueChange={(value) => {
-                if (value) setActiveCategory(value);
-              }}
-              className="flex flex-nowrap space-x-2"
-            >
+            <div className="flex flex-nowrap space-x-3">
               {categories.map((category) => (
-                <ToggleGroupItem 
-                  key={category.id} 
-                  value={category.id}
-                  className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium ${
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`${
                     activeCategory === category.id 
-                      ? 'bg-codecima-blue text-white' 
-                      : 'bg-codecima-darkblue/50 text-gray-300 hover:bg-codecima-darkblue/80'
-                  }`}
+                      ? 'filter-button-active' 
+                      : 'filter-button-inactive'
+                  } filter-button whitespace-nowrap`}
                 >
                   {category.name}
-                </ToggleGroupItem>
+                </button>
               ))}
-            </ToggleGroup>
+            </div>
           </motion.div>
 
           {/* Projects grid */}
@@ -169,7 +160,7 @@ const Portafolio = () => {
                 variants={itemVariants}
                 className="overflow-hidden rounded-lg"
               >
-                <Card className="h-full flex flex-col bg-codecima-darkblue/50 border-codecima-blue/10 transition-all hover:border-codecima-blue/30">
+                <Card className="h-full flex flex-col card-codecima">
                   <div className="relative aspect-video overflow-hidden">
                     <img 
                       src={project.image} 
@@ -213,7 +204,7 @@ const Portafolio = () => {
             <p className="text-gray-400 mb-8">
               Nuestro equipo de expertos está listo para ayudarte a implementar soluciones tecnológicas para tu negocio.
             </p>
-            <Button asChild className="bg-codecima-blue hover:bg-codecima-blue/80">
+            <Button className="btn-codecima">
               <a href="/contacto">Contáctanos ahora</a>
             </Button>
           </motion.div>

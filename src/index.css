@@ -76,3 +76,39 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Custom button styles */
+.btn-codecima {
+  @apply bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md 
+         transition-all duration-200 flex items-center justify-center;
+}
+
+.btn-codecima-outline {
+  @apply border border-codecima-blue/50 text-white hover:bg-codecima-blue/10
+         rounded-md transition-all duration-200;
+}
+
+/* Custom form styles */
+.input-codecima {
+  @apply bg-codecima-darkblue/80 border border-codecima-blue/20 rounded-md
+         text-gray-300 placeholder-gray-500 focus:outline-none focus:border-codecima-blue/50;
+}
+
+/* Custom card styles */
+.card-codecima {
+  @apply bg-codecima-darkblue/50 border-codecima-blue/10 rounded-lg overflow-hidden
+         transition-all hover:border-codecima-blue/30;
+}
+
+/* Filter button styles */
+.filter-button {
+  @apply rounded-full px-4 py-2 text-sm font-medium transition-colors;
+}
+
+.filter-button-active {
+  @apply bg-codecima-blue text-white;
+}
+
+.filter-button-inactive {
+  @apply bg-codecima-darkblue/50 text-gray-300 hover:bg-codecima-darkblue/80;
+}

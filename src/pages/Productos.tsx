@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, ChevronRight } from 'lucide-react';
+import { CheckCircle, ChevronRight, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Productos = () => {
@@ -91,6 +91,10 @@ const Productos = () => {
                 variants={itemVariants}
               >
                 <div className="p-8">
+                  <div className="flex items-center mb-3">
+                    <Shield className="text-codecima-blue mr-2" size={22} />
+                    <h3 className="text-lg font-medium text-codecima-blue">Solución Segura</h3>
+                  </div>
                   <h3 className="text-xl font-medium text-codecima-blue mb-1">{product.title}</h3>
                   <h2 className="text-2xl font-bold mb-4 text-white">{product.subtitle}</h2>
                   <p className="text-gray-300 mb-6 text-sm">{product.description}</p>
@@ -105,17 +109,17 @@ const Productos = () => {
                   </div>
                   
                   <div className="flex space-x-3">
-                    <Button className="bg-codecima-blue hover:bg-codecima-blue/80 text-white">
+                    <Button className="btn-codecima">
                       Solicitar Asesoría
                     </Button>
                     
-                    <Button variant="outline" className="border-codecima-blue/50 text-white hover:bg-codecima-blue/10">
+                    <Button variant="outline" className="btn-codecima-outline">
                       Ver Más <ChevronRight size={16} className="ml-1" />
                     </Button>
                   </div>
                 </div>
                 
-                <div className="relative h-full">
+                <div className="relative h-full min-h-[350px]">
                   <div className="absolute inset-0 bg-gradient-to-r from-codecima-navy/90 to-transparent z-10"></div>
                   <img
                     src={product.image}
