@@ -94,10 +94,18 @@
          text-gray-300 placeholder-gray-500 focus:outline-none focus:border-codecima-blue/50;
 }
 
-/* Custom card styles */
+/* Custom card styles - Updated with luminous borders */
 .card-codecima {
-  @apply bg-codecima-darkblue/50 border-codecima-blue/10 rounded-lg overflow-hidden
-         transition-all hover:border-codecima-blue/30;
+  @apply bg-codecima-darkblue/50 border-2 border-codecima-blue/30 rounded-lg overflow-hidden
+         transition-all hover:border-codecima-blue/60 shadow-lg;
+  box-shadow: 0 0 15px rgba(53, 182, 255, 0.1), inset 0 0 5px rgba(53, 182, 255, 0.05);
+}
+
+/* Enhanced card styles with luminous effect */
+.card-luminous {
+  @apply border-2 border-codecima-blue/40 rounded-lg overflow-hidden
+         transition-all duration-300 hover:border-codecima-blue/80;
+  box-shadow: 0 0 20px rgba(53, 182, 255, 0.15), inset 0 0 10px rgba(53, 182, 255, 0.05);
 }
 
 /* Filter button styles */

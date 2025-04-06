@@ -87,7 +87,7 @@ const Productos = () => {
             {products.map((product, index) => (
               <motion.div 
                 key={index} 
-                className="grid md:grid-cols-2 gap-8 items-center bg-codecima-navy/90 rounded-lg overflow-hidden border border-codecima-blue/20"
+                className="grid md:grid-cols-2 gap-8 items-center bg-codecima-navy/90 rounded-lg overflow-hidden border-2 border-codecima-blue/30 card-luminous"
                 variants={itemVariants}
               >
                 <div className="p-8">

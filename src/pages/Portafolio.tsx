@@ -147,7 +147,7 @@ const Portafolio = () => {
             </div>
           </motion.div>
 
-          {/* Projects grid */}
+          {/* Projects grid - updated with luminous card style */}
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={containerVariants}
@@ -160,7 +160,7 @@ const Portafolio = () => {
                 variants={itemVariants}
                 className="overflow-hidden rounded-lg"
               >
-                <Card className="h-full flex flex-col card-codecima">
+                <Card className="h-full flex flex-col card-codecima card-luminous">
                   <div className="relative aspect-video overflow-hidden">
                     <img 
                       src={project.image} 
