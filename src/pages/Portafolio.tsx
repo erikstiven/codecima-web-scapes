@@ -1,47 +1,85 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { ArrowRight } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import CallToAction from '@/components/home/CallToAction';
 
 const Portafolio = () => {
+  const categories = [
+    { id: 'todos', name: 'Todos' },
+    { id: 'software', name: 'Desarrollo de Software' },
+    { id: 'movil', name: 'Desarrollo Móvil' },
+    { id: 'ia', name: 'Inteligencia Artificial' },
+    { id: 'bi', name: 'Business Intelligence' },
+    { id: 'logistica', name: 'Logística' },
+    { id: 'rrhh', name: 'Recursos Humanos' },
+  ];
+
   const projects = [
     {
-      title: 'Sistema de Logística para TransNorte',
-      description: 'Implementación de un sistema completo para la gestión de flotas y seguimiento de envíos.',
-      image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81',
-      category: 'Carga Pesada'
+      id: 1,
+      title: 'Sistema de Gestión de Flotas',
+      description: 'Desarrollo de una solución integral para la administración y control de flotas de vehículos en tiempo real',
+      client: 'Cliente: TransLogic S.A.',
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c',
+      category: 'software'
     },
     {
-      title: 'Plataforma de Paquetería EnviosYa',
-      description: 'Desarrollo de plataforma integrada con seguimiento en tiempo real para empresa de paquetería.',
-      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7',
-      category: 'Paquetería'
+      id: 2,
+      title: 'Aplicación de Monitoreo GPS',
+      description: 'Aplicación móvil para el seguimiento en tiempo real de vehículos con informes detallados y alertas',
+      client: 'Cliente: FleetTech Inc.',
+      image: 'https://images.unsplash.com/photo-1586769852836-bc069f19e1b6',
+      category: 'movil'
     },
     {
-      title: 'Sistema Integral para LogisTruck',
-      description: 'Solución completa que incluye módulos de facturación, GPS y mantenimiento preventivo.',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6',
-      category: 'Carga Pesada'
+      id: 3,
+      title: 'Sistema de Mantenimiento Predictivo',
+      description: 'Plataforma de análisis predictivo para anticipar necesidades de mantenimiento en flotas de transporte',
+      client: 'Cliente: TransMaritime S.A.',
+      image: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f',
+      category: 'ia'
     },
     {
-      title: 'Portal de Cliente para FastDelivery',
-      description: 'Portal de autoservicio para clientes de empresa de transporte de paquetería.',
-      image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81',
-      category: 'Paquetería'
+      id: 4,
+      title: 'Panel de Control Empresarial',
+      description: 'Dashboard interactivo para visualización de KPIs y métricas clave de rendimiento de flota',
+      client: 'Cliente: Logística Integral Ltda.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
+      category: 'bi'
     },
     {
-      title: 'App Móvil para Conductores de MegaTransport',
-      description: 'Aplicación móvil para conductores con registro de actividades y comunicación directa.',
-      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7',
-      category: 'Carga Pesada'
+      id: 5,
+      title: 'Sistema de Optimización de Rutas',
+      description: 'Software para la planificación y optimización de rutas de transporte con ahorro de combustible',
+      client: 'Cliente: EcoTrans S.A.',
+      image: 'https://images.unsplash.com/photo-1581092921461-7a32b05ae331',
+      category: 'logistica'
     },
     {
-      title: 'Sistema de Ruteo Inteligente ExpressBox',
-      description: 'Algoritmo de optimización de rutas para empresa de paquetería con alta demanda.',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6',
-      category: 'Paquetería'
+      id: 6,
+      title: 'App de Gestión de Conductores',
+      description: 'Aplicación para administración de personal, horarios y cumplimiento de normativas',
+      client: 'Cliente: Transportes Rápidos C.A.',
+      image: 'https://images.unsplash.com/photo-1577412647305-991150c7d163',
+      category: 'rrhh'
     }
   ];
+
+  const [activeCategory, setActiveCategory] = useState('todos');
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+
+  useEffect(() => {
+    if (activeCategory === 'todos') {
+      setFilteredProjects(projects);
+    } else {
+      setFilteredProjects(projects.filter(project => project.category === activeCategory));
+    }
+  }, [activeCategory]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -67,54 +105,117 @@ const Portafolio = () => {
 
   return (
     <Layout>
-      <section className="pt-28 pb-16">
+      <section className="pt-24 pb-16 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header section */}
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
           >
-            <h1 className="text-4xl font-bold mb-4">
-              <span className="text-white">Nuestro </span>
-              <span className="text-codecima-blue">Portafolio</span>
+            <h2 className="text-codecima-blue text-lg font-medium mb-2">
+              Nuestro Portafolio
+            </h2>
+            <h1 className="text-4xl font-bold text-white mb-3">
+              Proyectos destacados
             </h1>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Descubre algunos de nuestros casos de éxito implementando soluciones tecnológicas para empresas de transporte.
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Descubre nuestras soluciones tecnológicas implementadas para clientes en diversos sectores
             </p>
           </motion.div>
 
+          {/* Category filters */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="flex justify-center mb-12 overflow-x-auto pb-2 hide-scrollbar"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <ToggleGroup 
+              type="single" 
+              value={activeCategory}
+              onValueChange={(value) => {
+                if (value) setActiveCategory(value);
+              }}
+              className="flex flex-nowrap space-x-2"
+            >
+              {categories.map((category) => (
+                <ToggleGroupItem 
+                  key={category.id} 
+                  value={category.id}
+                  className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium ${
+                    activeCategory === category.id 
+                      ? 'bg-codecima-blue text-white' 
+                      : 'bg-codecima-darkblue/50 text-gray-300 hover:bg-codecima-darkblue/80'
+                  }`}
+                >
+                  {category.name}
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+          </motion.div>
+
+          {/* Projects grid */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {projects.map((project, index) => (
+            {filteredProjects.map((project) => (
               <motion.div 
-                key={index} 
-                className="bg-codecima-darkblue/70 rounded-lg overflow-hidden border border-codecima-blue/10 hover:border-codecima-blue/30 transition-all group"
+                key={project.id}
                 variants={itemVariants}
+                className="overflow-hidden rounded-lg"
               >
-                <div className="relative">
-                  <div className="aspect-w-16 aspect-h-9 overflow-hidden">
+                <Card className="h-full flex flex-col bg-codecima-darkblue/50 border-codecima-blue/10 transition-all hover:border-codecima-blue/30">
+                  <div className="relative aspect-video overflow-hidden">
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
+                    <div className="absolute top-4 left-4 bg-codecima-blue text-white text-xs font-medium px-3 py-1 rounded-full">
+                      {categories.find(cat => cat.id === project.category)?.name}
+                    </div>
                   </div>
-                  <div className="absolute top-4 right-4 bg-codecima-blue text-white text-xs font-medium px-3 py-1 rounded-full">
-                    {project.category}
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                  <p className="text-gray-400 text-sm">{project.description}</p>
-                </div>
+                  <CardContent className="flex flex-col flex-grow p-6 text-left">
+                    <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
+                    <p className="text-gray-400 text-sm mb-4 flex-grow">{project.description}</p>
+                    <div className="flex justify-between items-center mt-auto">
+                      <span className="text-gray-400 text-xs">{project.client}</span>
+                      <Button variant="ghost" size="sm" className="text-codecima-blue hover:text-white hover:bg-codecima-blue/20">
+                        Ver detalles <ArrowRight className="ml-1 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Call to action section */}
+      <section className="bg-codecima-darkblue/30 py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <h2 className="text-3xl font-bold mb-4 text-white">
+              ¿Listo para iniciar tu próximo proyecto?
+            </h2>
+            <p className="text-gray-400 mb-8">
+              Nuestro equipo de expertos está listo para ayudarte a implementar soluciones tecnológicas para tu negocio.
+            </p>
+            <Button asChild className="bg-codecima-blue hover:bg-codecima-blue/80">
+              <a href="/contacto">Contáctanos ahora</a>
+            </Button>
           </motion.div>
         </div>
       </section>
