@@ -326,7 +326,9 @@ const Precios = () => {
                 </div>
 
                 <motion.div 
-                  className={`grid ${categoryId === 'hosting' ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-4'} gap-8`}
+                  className={`grid ${categoryId === 'hosting' ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-4'} gap-8 ${
+                    categoryId === 'logotipos' || categoryId === 'contenido' ? 'justify-items-center max-w-5xl mx-auto' : ''
+                  }`}
                   variants={containerVariants}
                   initial="hidden"
                   animate="visible"
@@ -336,7 +338,7 @@ const Precios = () => {
                       key={plan.id} 
                       variants={itemVariants}
                       onClick={() => handlePlanClick(categoryId, plan.id)}
-                      className="cursor-pointer"
+                      className={`cursor-pointer ${categoryId === 'logotipos' || categoryId === 'contenido' ? 'w-full max-w-md' : ''}`}
                     >
                       {categoryId === 'hosting' ? (
                         <Card className="overflow-hidden card-luminous h-full">
@@ -369,14 +371,18 @@ const Precios = () => {
                           </div>
                         </Card>
                       ) : (
-                        <Card className={`h-full flex flex-col ${plan.highlighted ? 'card-luminous border-codecima-blue/60 transform -translate-y-2' : 'card-codecima'}`}>
+                        <Card className={`h-full flex flex-col ${
+                          plan.highlighted 
+                            ? 'card-luminous border-codecima-blue/60 relative before:absolute before:inset-0 before:bg-codecima-blue/5 before:z-0 before:rounded-lg shadow-[0_0_25px_rgba(53,182,255,0.25)]' 
+                            : 'card-codecima'
+                        }`}>
                           {plan.highlighted && (
-                            <div className="bg-codecima-blue text-white text-xs font-bold uppercase py-1 px-2 rounded-full inline-block ml-6 mt-6">
+                            <div className="absolute -top-3 left-0 right-0 mx-auto w-max z-10 bg-codecima-blue text-white text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg border border-codecima-blue/80 animate-pulse">
                               Más popular
                             </div>
                           )}
                           
-                          <CardContent className="p-6 flex-grow">
+                          <CardContent className="p-6 flex-grow relative z-10">
                             <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
                             <p className="text-gray-400 mb-6">{plan.description}</p>
                             
@@ -402,7 +408,7 @@ const Precios = () => {
                             <Button 
                               className={`w-full ${
                                 plan.highlighted 
-                                  ? 'bg-codecima-blue hover:bg-codecima-blue/80' 
+                                  ? 'bg-codecima-blue hover:bg-codecima-blue/80 text-white shadow-[0_0_15px_rgba(53,182,255,0.3)]' 
                                   : 'bg-codecima-darkblue border border-codecima-blue/50 hover:bg-codecima-blue/20'
                               }`}
                             >
@@ -445,3 +451,4 @@ const Precios = () => {
 };
 
 export default Precios;
+
