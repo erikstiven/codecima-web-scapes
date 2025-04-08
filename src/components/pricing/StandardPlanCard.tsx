@@ -13,9 +13,9 @@ interface StandardPlanCardProps {
 const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) => {
   return (
     <Card 
-      className={`h-full flex flex-col ${
+      className={`h-full flex flex-col overflow-hidden ${
         plan.highlighted 
-          ? 'card-luminous border-codecima-blue/60 relative before:absolute before:inset-0 before:bg-codecima-blue/5 before:z-0 before:rounded-lg shadow-[0_0_25px_rgba(53,182,255,0.25)]' 
+          ? 'relative shadow-[0_0_25px_rgba(53,182,255,0.25)]' 
           : 'card-codecima'
       }`}
       onClick={onClick}
@@ -26,7 +26,7 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
         </div>
       )}
       
-      <CardContent className="p-6 flex-grow relative z-10">
+      <div className={`${plan.highlighted ? 'bg-codecima-blue/20' : 'bg-codecima-darkblue/50'} p-6 flex-grow relative z-0 border-b border-codecima-blue/30`}>
         <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
         <p className="text-gray-400 mb-6">{plan.description}</p>
         
@@ -58,7 +58,7 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
         >
           ¡Lo quiero! - 10% DCTO
         </Button>
-      </CardContent>
+      </div>
     </Card>
   );
 };

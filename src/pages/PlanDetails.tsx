@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircle, ChevronLeft, Shield, Zap, Database, Server } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 // This is the same data as in Precios.tsx - in a real app, this would be centralized in a data store or API
 const categoryData = {
@@ -506,6 +507,14 @@ const categoryData = {
   },
 };
 
+// Sample gallery images for carousel
+const galleryImages = [
+  { url: "/placeholder.svg", alt: "Sample design 1" },
+  { url: "/placeholder.svg", alt: "Sample design 2" },
+  { url: "/placeholder.svg", alt: "Sample design 3" },
+  { url: "/lovable-uploads/9e068d17-4f09-4dfa-b60d-65d4e4b1a124.png", alt: "Sample design 4" },
+];
+
 const PlanDetails = () => {
   const { categoryId, planId } = useParams();
   const navigate = useNavigate();
@@ -567,6 +576,37 @@ const PlanDetails = () => {
               </div>
             </motion.div>
           </div>
+
+          {/* Gallery Carousel Card */}
+          <Card className="card-luminous bg-codecima-darkblue/70 mb-8">
+            <CardContent className="p-6">
+              <h2 className="text-xl font-semibold text-white mb-4">Galería de ejemplos</h2>
+              
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {galleryImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="p-1">
+                        <Card className="overflow-hidden border-codecima-blue/20">
+                          <CardContent className="flex aspect-video items-center justify-center p-0">
+                            <img 
+                              src={image.url} 
+                              alt={image.alt} 
+                              className="w-full h-full object-cover"
+                            />
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <div className="flex justify-end gap-2 mt-4">
+                  <CarouselPrevious className="static translate-y-0 bg-codecima-darkblue border-codecima-blue/40 text-white hover:bg-codecima-blue/30" />
+                  <CarouselNext className="static translate-y-0 bg-codecima-darkblue border-codecima-blue/40 text-white hover:bg-codecima-blue/30" />
+                </div>
+              </Carousel>
+            </CardContent>
+          </Card>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-2">
