@@ -83,8 +83,10 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
           </div>
 
           <motion.div 
-            className={`grid ${categoryId === 'hosting' ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-4'} gap-8 ${
-              categoryId === 'logotipos' || categoryId === 'contenido' ? 'justify-items-center max-w-5xl mx-auto' : ''
+            className={`grid gap-8 ${
+              categoryId === 'hosting' ? 'md:grid-cols-2 max-w-4xl mx-auto' : 
+              categoryId === 'logotipos' || categoryId === 'contenido' ? 'md:grid-cols-3 max-w-5xl mx-auto' : 
+              'md:grid-cols-2 lg:grid-cols-4'
             }`}
             variants={containerVariants}
             initial="hidden"
@@ -94,7 +96,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
               <motion.div 
                 key={plan.id} 
                 variants={itemVariants}
-                className={`cursor-pointer ${categoryId === 'logotipos' || categoryId === 'contenido' ? 'w-full max-w-md' : ''}`}
+                className="w-full cursor-pointer"
               >
                 {categoryId === 'hosting' ? (
                   <HostingPlanCard 
