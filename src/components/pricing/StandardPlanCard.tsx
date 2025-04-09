@@ -13,11 +13,7 @@ interface StandardPlanCardProps {
 const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) => {
   return (
     <Card 
-      className={`h-full flex flex-col overflow-hidden ${
-        plan.highlighted 
-          ? 'relative shadow-[0_0_30px_rgba(113,82,245,0.4)]' 
-          : 'card-codecima'
-      }`}
+      className={`overflow-hidden ${plan.highlighted ? 'card-luminous h-full' : 'card-codecima h-full'}`}
       onClick={onClick}
     >
       {plan.highlighted && (
@@ -28,27 +24,53 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
       
       <div className={`${
         plan.highlighted 
-          ? 'bg-gradient-to-br from-[#0a1a40] via-[#094e9e] to-codecima-purple/30 backdrop-blur-sm' 
-          : 'bg-gradient-to-br from-[#0c1f45] to-[#031b38]'
-        } p-6 flex-grow relative z-0 border-b ${
-          plan.highlighted ? 'border-codecima-purple/30' : 'border-codecima-blue/30'
+          ? 'bg-gradient-to-br from-codecima-navy to-codecima-darkblue p-6 text-center' 
+          : 'bg-gradient-to-br from-codecima-navy to-codecima-darkblue p-6 text-center'
         }`}>
-        <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-        <p className="text-gray-400 mb-6">{plan.description}</p>
+        <h3 className={`text-xl font-bold text-white mb-4 ${
+          plan.highlighted 
+            ? 'bg-codecima-purple inline-block px-3 py-1 rounded' 
+            : 'bg-codecima-blue inline-block px-3 py-1 rounded'
+        }`}>
+          {plan.name}
+        </h3>
         
-        <div className="flex items-baseline mb-6">
-          <span className="text-4xl font-bold text-white">USD {plan.price}</span>
+        {plan.icons && plan.icons.length > 0 && (
+          <div className="flex justify-center space-x-4 my-4">
+            {plan.icons.map((icon, i) => (
+              <div key={i} className={`${icon.color} p-3 rounded-full`}>
+                <icon.component size={20} />
+              </div>
+            ))}
+          </div>
+        )}
+        
+        <div className="text-gray-300 mb-2">{plan.description}</div>
+      </div>
+      
+      <div className={`p-6 text-center ${plan.highlighted ? 'bg-white' : 'bg-codecima-darkblue/30'}`}>
+        <div className="mb-4">
+          <span className={`text-3xl font-bold ${plan.highlighted ? 'text-codecima-darkblue' : 'text-white'}`}>
+            USD {plan.price}
+          </span>
         </div>
         
-        <div className="space-y-3 mb-8">
-          {plan.features.map((feature, i) => (
-            <div key={i} className="flex items-start">
+        <div className="space-y-3 mb-6">
+          {plan.features.slice(0, 5).map((feature, i) => (
+            <div key={i} className={`flex items-start ${plan.highlighted ? 'justify-center' : 'justify-start'}`}>
               {feature.included ? (
-                <CheckCircle className={`${plan.highlighted ? 'text-codecima-purple' : 'text-codecima-lightblue'} mr-2 mt-0.5 flex-shrink-0`} size={18} />
+                <CheckCircle 
+                  className={`${plan.highlighted ? 'text-codecima-blue' : 'text-codecima-lightblue'} mr-2 mt-0.5 flex-shrink-0`} 
+                  size={18} 
+                />
               ) : (
                 <X className="text-gray-500 mr-2 mt-0.5 flex-shrink-0" size={18} />
               )}
-              <span className={feature.included ? "text-gray-300" : "text-gray-500"}>
+              <span className={`${
+                feature.included 
+                  ? (plan.highlighted ? 'text-gray-700 text-sm' : 'text-gray-300 text-sm') 
+                  : 'text-gray-500 text-sm'
+              }`}>
                 {feature.text}
               </span>
             </div>
@@ -58,8 +80,8 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
         <Button 
           className={`w-full ${
             plan.highlighted 
-              ? 'bg-codecima-purple hover:bg-codecima-purple/80 text-white shadow-[0_0_15px_rgba(113,86,229,0.4)]' 
-              : 'bg-codecima-lightblue border border-codecima-blue/50 hover:bg-codecima-lightblue/80 text-white'
+              ? 'bg-codecima-blue hover:bg-codecima-blue/80' 
+              : 'bg-codecima-purple hover:bg-codecima-purple/80 text-white'
           }`}
         >
           ¡Lo quiero! - 10% DCTO
