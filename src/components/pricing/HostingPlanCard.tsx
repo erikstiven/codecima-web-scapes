@@ -22,12 +22,12 @@ const HostingPlanCard: React.FC<HostingPlanCardProps> = ({ plan, onClick }) => {
     >
       <div className="bg-gradient-to-b from-codecima-navy to-[#061633] p-6 text-center relative">
         {plan.highlighted && (
-          <div className="absolute -top-3 left-0 right-0 mx-auto w-max z-10 bg-codecima-purple text-white text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg border border-codecima-purple/80 animate-pulse">
+          <div className="absolute -top-4 left-0 right-0 mx-auto w-max z-10 bg-codecima-purple text-white text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg border border-codecima-purple/80 animate-pulse">
             Más popular
           </div>
         )}
         
-        <h3 className={`text-lg font-bold text-white mb-4 ${
+        <h3 className={`text-lg font-bold text-white mb-4 mt-2 ${
           plan.highlighted 
             ? 'bg-codecima-purple inline-block px-3 py-1 rounded-md' 
             : 'bg-codecima-blue inline-block px-3 py-1 rounded-md'
