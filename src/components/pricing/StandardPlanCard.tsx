@@ -28,8 +28,8 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
       
       <div className={`${
         plan.highlighted 
-          ? 'bg-gradient-to-br from-codecima-navy via-codecima-darkblue to-codecima-purple/30 backdrop-blur-sm' 
-          : 'bg-codecima-darkblue/50'
+          ? 'bg-gradient-to-br from-[#0a1a40] via-[#094e9e] to-codecima-purple/30 backdrop-blur-sm' 
+          : 'bg-gradient-to-br from-[#0c1f45] to-[#031b38]'
         } p-6 flex-grow relative z-0 border-b ${
           plan.highlighted ? 'border-codecima-purple/30' : 'border-codecima-blue/30'
         }`}>
@@ -44,7 +44,7 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
           {plan.features.map((feature, i) => (
             <div key={i} className="flex items-start">
               {feature.included ? (
-                <CheckCircle className={`${plan.highlighted ? 'text-codecima-purple' : 'text-codecima-blue'} mr-2 mt-0.5 flex-shrink-0`} size={18} />
+                <CheckCircle className={`${plan.highlighted ? 'text-codecima-purple' : 'text-codecima-lightblue'} mr-2 mt-0.5 flex-shrink-0`} size={18} />
               ) : (
                 <X className="text-gray-500 mr-2 mt-0.5 flex-shrink-0" size={18} />
               )}
@@ -59,7 +59,7 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
           className={`w-full ${
             plan.highlighted 
               ? 'bg-codecima-purple hover:bg-codecima-purple/80 text-white shadow-[0_0_15px_rgba(113,86,229,0.4)]' 
-              : 'bg-codecima-darkblue border border-codecima-blue/50 hover:bg-codecima-blue/20'
+              : 'bg-codecima-lightblue border border-codecima-blue/50 hover:bg-codecima-lightblue/80 text-white'
           }`}
         >
           ¡Lo quiero! - 10% DCTO
