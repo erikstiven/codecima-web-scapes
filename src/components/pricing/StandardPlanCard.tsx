@@ -15,18 +15,24 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
     <Card 
       className={`h-full flex flex-col overflow-hidden ${
         plan.highlighted 
-          ? 'relative shadow-[0_0_25px_rgba(53,182,255,0.25)]' 
+          ? 'relative shadow-[0_0_30px_rgba(113,82,245,0.4)]' 
           : 'card-codecima'
       }`}
       onClick={onClick}
     >
       {plan.highlighted && (
-        <div className="absolute -top-3 left-0 right-0 mx-auto w-max z-10 bg-codecima-blue text-white text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg border border-codecima-blue/80 animate-pulse">
+        <div className="absolute -top-3 left-0 right-0 mx-auto w-max z-10 bg-codecima-purple text-white text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg border border-codecima-purple/80 animate-pulse">
           Más popular
         </div>
       )}
       
-      <div className={`${plan.highlighted ? 'bg-codecima-blue/20' : 'bg-codecima-darkblue/50'} p-6 flex-grow relative z-0 border-b border-codecima-blue/30`}>
+      <div className={`${
+        plan.highlighted 
+          ? 'bg-gradient-to-br from-codecima-navy via-codecima-darkblue to-codecima-purple/30 backdrop-blur-sm' 
+          : 'bg-codecima-darkblue/50'
+        } p-6 flex-grow relative z-0 border-b ${
+          plan.highlighted ? 'border-codecima-purple/30' : 'border-codecima-blue/30'
+        }`}>
         <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
         <p className="text-gray-400 mb-6">{plan.description}</p>
         
@@ -38,7 +44,7 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
           {plan.features.map((feature, i) => (
             <div key={i} className="flex items-start">
               {feature.included ? (
-                <CheckCircle className="text-codecima-blue mr-2 mt-0.5 flex-shrink-0" size={18} />
+                <CheckCircle className={`${plan.highlighted ? 'text-codecima-purple' : 'text-codecima-blue'} mr-2 mt-0.5 flex-shrink-0`} size={18} />
               ) : (
                 <X className="text-gray-500 mr-2 mt-0.5 flex-shrink-0" size={18} />
               )}
@@ -52,7 +58,7 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
         <Button 
           className={`w-full ${
             plan.highlighted 
-              ? 'bg-codecima-blue hover:bg-codecima-blue/80 text-white shadow-[0_0_15px_rgba(53,182,255,0.3)]' 
+              ? 'bg-codecima-purple hover:bg-codecima-purple/80 text-white shadow-[0_0_15px_rgba(113,86,229,0.4)]' 
               : 'bg-codecima-darkblue border border-codecima-blue/50 hover:bg-codecima-blue/20'
           }`}
         >
