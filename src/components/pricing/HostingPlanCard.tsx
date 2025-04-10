@@ -16,14 +16,14 @@ const HostingPlanCard: React.FC<HostingPlanCardProps> = ({ plan, onClick }) => {
       className={`overflow-hidden ${
         plan.highlighted 
           ? 'border-2 border-codecima-blue shadow-lg shadow-blue-500/20' 
-          : 'border border-codecima-blue/50'
+          : 'border-2 border-codecima-blue/50'
       } h-full cursor-pointer`}
       onClick={onClick}
     >
       <div className="bg-codecima-darkblue p-6 text-center relative">
         {plan.highlighted && (
-          <div className="absolute -top-3 left-0 right-0 mx-auto w-max z-10 bg-codecima-purple text-white text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg border border-codecima-purple/80 animate-pulse">
-            Más popular
+          <div className="absolute -top-5 left-0 right-0 mx-auto w-max z-10 bg-codecima-purple text-white text-xs font-bold uppercase py-1.5 px-6 rounded-full shadow-lg border-2 border-white">
+            MÁS POPULAR
           </div>
         )}
         
