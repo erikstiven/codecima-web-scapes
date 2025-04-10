@@ -44,7 +44,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
       defaultValue="diseno-web" 
       value={activeTab}
       onValueChange={setActiveTab}
-      className="w-full"
+      className="w-full max-w-7xl mx-auto"
     >
       <div className="flex justify-center mb-8">
         <TabsList className="bg-codecima-darkblue/50 border border-codecima-blue/20 p-1">

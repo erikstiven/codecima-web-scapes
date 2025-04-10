@@ -17,32 +17,28 @@ const Precios = () => {
   return (
     <Layout>
       <section className="pt-28 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl font-bold mb-3 text-white">
-              Nuestros <span className="text-codecima-purple">Precios</span>
-            </h1>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Ofrecemos soluciones para todos los presupuestos. Contrata HOY tu página WEB + 
-              HOSTING + DOMINIO. ¡Ahora con Chatbot GRATIS!
-            </p>
-          </motion.div>
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-4xl font-bold mb-3 text-white">
+            Nuestros <span className="text-codecima-purple">Precios</span>
+          </h1>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Ofrecemos soluciones para todos los presupuestos. Contrata HOY tu página WEB + 
+            HOSTING + DOMINIO. ¡Ahora con Chatbot GRATIS!
+          </p>
+        </motion.div>
 
-          <div className="bg-codecima-darkblue rounded-lg p-8 border-2 border-codecima-blue/50 mb-8">
-            <PricingTabs 
-              activeTab={activeTab} 
-              setActiveTab={setActiveTab} 
-              handlePlanClick={handlePlanClick} 
-            />
-          </div>
+        <PricingTabs 
+          activeTab={activeTab} 
+          setActiveTab={setActiveTab} 
+          handlePlanClick={handlePlanClick} 
+        />
 
-          <GuaranteeSection />
-        </div>
+        <GuaranteeSection />
       </section>
     </Layout>
   );
