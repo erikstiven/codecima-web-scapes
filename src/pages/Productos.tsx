@@ -87,7 +87,7 @@ const Productos = () => {
             {products.map((product, index) => (
               <motion.div 
                 key={index} 
-                className="grid md:grid-cols-2 gap-8 items-center bg-codecima-navy/90 rounded-lg overflow-hidden border-2 border-codecima-blue/30 card-luminous"
+                className="grid md:grid-cols-2 gap-8 items-center bg-codecima-darkblue rounded-lg overflow-hidden border border-codecima-blue/30 hover:border-codecima-blue/60 transition-all"
                 variants={itemVariants}
               >
                 <div className="p-8">
@@ -109,18 +109,18 @@ const Productos = () => {
                   </div>
                   
                   <div className="flex space-x-3">
-                    <Button className="btn-codecima">
+                    <Button className="bg-codecima-blue hover:bg-codecima-blue/80 text-white">
                       Solicitar Asesoría
                     </Button>
                     
-                    <Button variant="outline" className="btn-codecima-outline">
+                    <Button variant="outline" className="border-codecima-blue/50 text-white hover:bg-codecima-blue/10">
                       Ver Más <ChevronRight size={16} className="ml-1" />
                     </Button>
                   </div>
                 </div>
                 
                 <div className="relative h-full min-h-[350px]">
-                  <div className="absolute inset-0 bg-gradient-to-r from-codecima-navy/90 to-transparent z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-codecima-darkblue to-transparent z-10"></div>
                   <img
                     src={product.image}
                     alt={product.subtitle}

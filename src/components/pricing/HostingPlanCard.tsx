@@ -13,14 +13,14 @@ interface HostingPlanCardProps {
 const HostingPlanCard: React.FC<HostingPlanCardProps> = ({ plan, onClick }) => {
   return (
     <Card 
-      className={`overflow-hidden border-2 ${
+      className={`overflow-hidden ${
         plan.highlighted 
-          ? 'border-codecima-blue/60 shadow-lg shadow-blue-500/20' 
-          : 'border-codecima-blue/20'
-      } h-full`}
+          ? 'border border-codecima-blue shadow-lg shadow-blue-500/20' 
+          : 'border border-codecima-blue/30'
+      } h-full cursor-pointer`}
       onClick={onClick}
     >
-      <div className="bg-gradient-to-b from-codecima-navy to-[#061633] p-6 text-center relative">
+      <div className="bg-codecima-darkblue p-6 text-center relative">
         {plan.highlighted && (
           <div className="absolute -top-4 left-0 right-0 mx-auto w-max z-10 bg-codecima-purple text-white text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg border border-codecima-purple/80 animate-pulse">
             Más popular
@@ -76,7 +76,7 @@ const HostingPlanCard: React.FC<HostingPlanCardProps> = ({ plan, onClick }) => {
               : 'bg-codecima-blue hover:bg-codecima-blue/80 text-white'
           }`}
         >
-          Contratar Ahora
+          ¡Lo quiero! - 10% DCTO
         </Button>
       </div>
     </Card>

@@ -67,7 +67,7 @@ const Nosotros = () => {
               <img
                 src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
                 alt="Equipo de CodeCima"
-                className="relative rounded-lg w-full h-auto object-cover"
+                className="relative rounded-lg w-full h-auto object-cover border border-codecima-blue/30"
               />
             </div>
           </div>
@@ -75,7 +75,7 @@ const Nosotros = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
             {stats.map((stat, index) => (
-              <div key={index} className="bg-codecima-darkblue/50 rounded-lg p-6 text-center border border-codecima-blue/10">
+              <div key={index} className="bg-codecima-darkblue rounded-lg p-6 text-center border border-codecima-blue/30 hover:border-codecima-blue/60 transition-all">
                 <div className="text-3xl font-bold text-codecima-blue mb-2">{stat.value}</div>
                 <div className="text-gray-300">{stat.label}</div>
               </div>
@@ -96,7 +96,7 @@ const Nosotros = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {values.map((value, index) => (
-                <div key={index} className="bg-codecima-darkblue/50 rounded-lg p-6 border border-codecima-blue/10 hover:border-codecima-blue/30 transition-all group">
+                <div key={index} className="bg-codecima-darkblue rounded-lg p-6 border border-codecima-blue/30 hover:border-codecima-blue/60 transition-all group">
                   <div className="text-codecima-blue mb-4 p-3 bg-codecima-blue/10 rounded-lg inline-block group-hover:bg-codecima-blue/20 transition-colors">
                     {value.icon}
                   </div>
