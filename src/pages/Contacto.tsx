@@ -20,7 +20,7 @@ const Contacto = () => {
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div>
-              <div className="bg-codecima-darkblue/50 rounded-lg p-8 border border-codecima-blue/10 mb-8">
+              <div className="bg-codecima-darkblue/50 rounded-lg p-8 border-2 border-codecima-blue/50 hover:border-codecima-blue transition-all mb-8">
                 <h2 className="text-2xl font-bold text-white mb-6">Información de contacto</h2>
                 
                 <div className="space-y-6">
@@ -66,7 +66,7 @@ const Contacto = () => {
                 </div>
               </div>
               
-              <div className="bg-codecima-darkblue/50 rounded-lg p-8 border border-codecima-blue/10">
+              <div className="bg-codecima-darkblue/50 rounded-lg p-8 border-2 border-codecima-blue/50 hover:border-codecima-blue transition-all">
                 <h2 className="text-2xl font-bold text-white mb-6">Preguntas Frecuentes</h2>
                 
                 <div className="space-y-6">
@@ -94,7 +94,7 @@ const Contacto = () => {
             </div>
             
             <div className="space-y-8">
-              <div className="bg-codecima-darkblue/50 rounded-lg p-8 border border-codecima-blue/10">
+              <div className="bg-codecima-darkblue/50 rounded-lg p-8 border-2 border-codecima-blue/50 hover:border-codecima-blue transition-all">
                 <h2 className="text-2xl font-bold text-white mb-6">Envíanos un mensaje</h2>
                 <p className="text-gray-300 mb-6">
                   Completa el formulario y un asesor se pondrá en contacto contigo a la brevedad.
@@ -103,7 +103,7 @@ const Contacto = () => {
                 <ContactForm />
               </div>
               
-              <div className="bg-codecima-darkblue/50 rounded-lg p-8 border border-codecima-blue/10">
+              <div className="bg-codecima-darkblue/50 rounded-lg p-8 border-2 border-codecima-blue/50 hover:border-codecima-blue transition-all">
                 <h2 className="text-xl font-bold text-white mb-4">Nuestra ubicación</h2>
                 <div className="relative w-full h-64 rounded-lg overflow-hidden">
                   {/* Aquí iría un mapa real, pero para este ejemplo usaremos una imagen */}

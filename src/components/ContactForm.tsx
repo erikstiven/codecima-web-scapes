@@ -12,7 +12,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-codecima-darkblue rounded-lg p-6 shadow-lg border border-codecima-blue/30 hover:border-codecima-blue/60 transition-all">
+    <div className="bg-codecima-darkblue rounded-lg p-6 shadow-lg border-2 border-codecima-blue/50 hover:border-codecima-blue transition-all">
       <div className="space-y-4">
         <div className="flex items-center bg-codecima-navy/80 border border-codecima-blue/20 rounded-md px-4 py-3">
           <User className="text-codecima-lightblue mr-2" size={20} />

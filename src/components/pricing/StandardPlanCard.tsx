@@ -15,14 +15,14 @@ const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) =>
     <Card 
       className={`overflow-hidden ${
         plan.highlighted 
-          ? 'border border-codecima-blue shadow-lg shadow-blue-500/20' 
-          : 'border border-codecima-blue/30'
+          ? 'border-2 border-codecima-blue shadow-lg shadow-blue-500/20' 
+          : 'border border-codecima-blue/50'
       } h-full cursor-pointer`}
       onClick={onClick}
     >
       <div className="bg-codecima-darkblue p-6 text-center relative">
         {plan.highlighted && (
-          <div className="absolute -top-4 left-0 right-0 mx-auto w-max z-10 bg-codecima-purple text-white text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg border border-codecima-purple/80 animate-pulse">
+          <div className="absolute -top-3 left-0 right-0 mx-auto w-max z-10 bg-codecima-purple text-white text-xs font-bold uppercase py-1.5 px-4 rounded-full shadow-lg border border-codecima-purple/80 animate-pulse">
             Más popular
           </div>
         )}

@@ -33,11 +33,13 @@ const Precios = () => {
             </p>
           </motion.div>
 
-          <PricingTabs 
-            activeTab={activeTab} 
-            setActiveTab={setActiveTab} 
-            handlePlanClick={handlePlanClick} 
-          />
+          <div className="bg-codecima-darkblue rounded-lg p-8 border-2 border-codecima-blue/50 mb-8">
+            <PricingTabs 
+              activeTab={activeTab} 
+              setActiveTab={setActiveTab} 
+              handlePlanClick={handlePlanClick} 
+            />
+          </div>
 
           <GuaranteeSection />
         </div>

@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -96,14 +95,14 @@
 
 /* Custom card styles - Updated with consistent borders */
 .card-codecima {
-  @apply bg-codecima-darkblue border border-codecima-blue/30 rounded-lg overflow-hidden
-         transition-all hover:border-codecima-blue/60 shadow-lg;
+  @apply bg-codecima-darkblue border-2 border-codecima-blue/50 rounded-lg overflow-hidden
+         transition-all hover:border-codecima-blue shadow-lg;
 }
 
 /* Enhanced card styles with luminous effect */
 .card-luminous {
-  @apply border border-codecima-blue/30 rounded-lg overflow-hidden
-         transition-all duration-300 hover:border-codecima-blue/60;
+  @apply border-2 border-codecima-blue/50 rounded-lg overflow-hidden
+         transition-all duration-300 hover:border-codecima-blue;
   box-shadow: 0 0 20px rgba(53, 182, 255, 0.15), inset 0 0 10px rgba(53, 182, 255, 0.05);
 }
 
@@ -122,12 +121,11 @@
 
 /* Pricing card styles */
 .pricing-card {
-  @apply bg-codecima-darkblue border border-codecima-blue/30 
-         hover:border-codecima-blue/60 rounded-lg overflow-hidden transition-all;
+  @apply bg-codecima-darkblue border-2 border-codecima-blue/50 
+         hover:border-codecima-blue rounded-lg overflow-hidden transition-all;
 }
 
 .pricing-card-highlighted {
-  @apply border-codecima-blue shadow-lg;
+  @apply border-2 border-codecima-blue shadow-lg;
   box-shadow: 0 4px 20px rgba(0, 117, 255, 0.3);
 }
-
