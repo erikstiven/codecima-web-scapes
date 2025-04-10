@@ -214,7 +214,7 @@ const Productos = () => {
                   </div>
                   
                   <div className="relative h-full min-h-[350px] lg:min-h-[500px]">
-                    <div className="absolute inset-0 bg-gradient-to-r from-codecima-darkblue to-transparent z-10"></div>
+                    {/* Removed the gradient overlay so images are fully visible */}
                     <img
                       src={product.image}
                       alt={product.subtitle}
