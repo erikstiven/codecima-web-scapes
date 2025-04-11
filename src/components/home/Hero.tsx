@@ -1,9 +1,34 @@
 
 import React, { useEffect } from 'react';
-import { Play, Rocket } from 'lucide-react';
+import { Play, Rocket, Star, Sparkles, Zap } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import ContactForm from '../ContactForm';
 
+// Animated flying rocket component
+const FlyingRocket = () => {
+  return (
+    <motion.div
+      className="absolute z-10"
+      initial={{ x: -100, y: 100, opacity: 0 }}
+      animate={{
+        x: [null, 400, 300, 200, 0, -100],
+        y: [null, 0, 150, 50, 100, 100],
+        rotate: [0, 15, 5, -15, -5, 0],
+        opacity: [0, 1, 1, 1, 1, 0]
+      }}
+      transition={{
+        duration: 15,
+        times: [0, 0.2, 0.4, 0.6, 0.8, 1],
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+    >
+      <Rocket size={40} className="text-codecima-lightblue filter drop-shadow-[0_0_8px_rgba(53,182,255,0.8)]" />
+    </motion.div>
+  );
+};
+
+// Floating rocket for title section
 const FloatingRocket = () => {
   const controls = useAnimation();
   
@@ -36,11 +61,81 @@ const FloatingRocket = () => {
   );
 };
 
+// Floating stars that twinkle
+const FloatingStars = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {[...Array(8)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{
+            duration: 2 + Math.random() * 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: Math.random() * 2
+          }}
+        >
+          {i % 2 === 0 ? (
+            <Star size={i % 3 === 0 ? 24 : 16} className="text-yellow-300" />
+          ) : (
+            <Sparkles size={i % 3 === 0 ? 24 : 16} className="text-codecima-purple" />
+          )}
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+// Character mascot that floats near the form
+const CharacterMascot = () => {
+  return (
+    <motion.div 
+      className="absolute -bottom-10 -right-16 z-10"
+      animate={{
+        y: [0, -15, 0],
+        rotate: [0, 5, 0],
+      }}
+      transition={{
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+    >
+      <motion.div 
+        className="relative w-32 h-32 rounded-full bg-gradient-to-br from-codecima-purple to-codecima-blue flex items-center justify-center"
+        animate={{ 
+          boxShadow: [
+            "0 0 15px rgba(113, 86, 229, 0.4)", 
+            "0 0 25px rgba(113, 86, 229, 0.6)", 
+            "0 0 15px rgba(113, 86, 229, 0.4)"
+          ] 
+        }}
+        transition={{ 
+          duration: 2, 
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        <Zap size={50} className="text-white transform -rotate-12" />
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const Hero = () => {
   return (
     <section className="pt-32 pb-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Background elements */}
+        {/* Enhanced background elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <motion.div
             className="absolute top-20 left-20 w-72 h-72 rounded-full bg-codecima-blue/5 blur-3xl"
@@ -67,7 +162,30 @@ const Hero = () => {
               delay: 1
             }}
           />
+          
+          {/* New animated elements */}
+          <motion.div
+            className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-codecima-lightblue/5 blur-2xl"
+            animate={{
+              scale: [1, 1.4, 1],
+              opacity: [0.2, 0.4, 0.2],
+              x: [0, 30, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+          />
         </div>
+        
+        {/* Add floating stars across the hero */}
+        <FloatingStars />
+        
+        {/* Add flying rocket that moves across the screen */}
+        <FlyingRocket />
         
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <motion.div 
@@ -118,8 +236,20 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.9 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              className="relative"
             >
-              <button className="flex items-center text-white bg-codecima-blue hover:bg-codecima-blue/80 rounded-md px-6 py-3 transition-colors">
+              <motion.div
+                className="absolute -inset-1 rounded-lg bg-gradient-to-r from-codecima-purple to-codecima-blue opacity-70 blur-sm"
+                animate={{
+                  opacity: [0.5, 0.8, 0.5],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <button className="relative flex items-center text-white bg-codecima-blue hover:bg-codecima-blue/80 rounded-md px-6 py-3 transition-colors">
                 <Play size={20} className="mr-2" />
                 <span className="font-medium">Ver Demo</span>
               </button>
@@ -156,6 +286,9 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative z-10"
           >
+            {/* Add character mascot near the form */}
+            <CharacterMascot />
+            
             <motion.div
               className="absolute -z-10 inset-0 bg-codecima-blue/5 rounded-xl blur-xl"
               animate={{
@@ -167,10 +300,39 @@ const Hero = () => {
                 ease: "easeInOut"
               }}
             />
+            
+            {/* Orbit effect around the form */}
+            <div className="absolute -inset-3 z-0">
+              <motion.div
+                className="absolute w-10 h-10 rounded-full bg-codecima-purple/30 blur-md"
+                animate={{
+                  x: [0, 150, 300, 300, 150, 0, -150, -300, -300, -150, 0],
+                  y: [-150, -300, -150, 150, 300, 150, 300, 150, -150, -300, -150],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+              <motion.div
+                className="absolute w-6 h-6 rounded-full bg-codecima-blue/30 blur-md"
+                animate={{
+                  x: [0, -150, -300, -300, -150, 0, 150, 300, 300, 150, 0],
+                  y: [150, 300, 150, -150, -300, -150, -300, -150, 150, 300, 150],
+                }}
+                transition={{
+                  duration: 15,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+            </div>
+            
             <motion.div
               whileHover={{ y: -5, boxShadow: "0 10px 40px rgba(0, 117, 255, 0.2)" }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="bg-codecima-darkblue/80 border-2 border-codecima-blue/30 rounded-xl overflow-hidden shadow-lg"
+              className="bg-codecima-darkblue/80 border-2 border-codecima-blue/30 rounded-xl overflow-hidden shadow-lg relative z-10"
             >
               <ContactForm />
             </motion.div>
