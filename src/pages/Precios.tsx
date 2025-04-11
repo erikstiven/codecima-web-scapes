@@ -21,15 +21,38 @@ const Precios = () => {
           className="text-center mb-12"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ 
+            duration: 0.6,
+            type: "spring",
+            stiffness: 100
+          }}
         >
-          <h1 className="text-4xl font-bold mb-3 text-white">
-            Nuestros <span className="text-codecima-purple">Precios</span>
-          </h1>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <motion.h1 
+            className="text-4xl font-bold mb-3 text-white"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Nuestros <motion.span 
+              className="text-codecima-purple"
+              whileHover={{ 
+                scale: 1.05,
+                color: "#8B5CF6",
+                transition: { duration: 0.2 } 
+              }}
+            >
+              Precios
+            </motion.span>
+          </motion.h1>
+          <motion.p 
+            className="text-gray-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             Ofrecemos soluciones para todos los presupuestos. Contrata HOY tu página WEB + 
             HOSTING + DOMINIO. ¡Ahora con Chatbot GRATIS!
-          </p>
+          </motion.p>
         </motion.div>
 
         <PricingTabs 
@@ -38,7 +61,13 @@ const Precios = () => {
           handlePlanClick={handlePlanClick} 
         />
 
-        <GuaranteeSection />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <GuaranteeSection />
+        </motion.div>
       </section>
     </Layout>
   );
