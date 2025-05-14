@@ -1,9 +1,8 @@
-
 import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { CheckCircle, X } from 'lucide-react';
 import { Plan } from '@/data/pricingData';
+import { CheckCircle } from 'lucide-react';
+import { cn } from "@/lib/utils";
+import GlowButton from '@/components/ui/GlowButton';
 
 interface StandardPlanCardProps {
   plan: Plan;
@@ -12,64 +11,94 @@ interface StandardPlanCardProps {
 
 const StandardPlanCard: React.FC<StandardPlanCardProps> = ({ plan, onClick }) => {
   return (
-    <Card 
-      className={`overflow-hidden ${
-        plan.highlighted 
-          ? 'border-2 border-codecima-blue shadow-lg shadow-blue-500/20' 
-          : 'border-2 border-codecima-blue/50'
-      } h-full cursor-pointer`}
-      onClick={onClick}
-    >
-      <div className="bg-codecima-darkblue p-6 text-center relative">
-        {plan.highlighted && (
-          <div className="absolute -top-5 left-0 right-0 mx-auto w-max z-10 bg-codecima-purple text-white text-xs font-bold uppercase py-1.5 px-6 rounded-full shadow-lg border-2 border-white">
-            MÁS POPULAR
-          </div>
+    <div className="relative h-full flex flex-col">
+      {/* Etiqueta de "MÁS POPULAR" */}
+      {plan.highlighted && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20 
+          bg-gradient-to-r from-[#f12711] to-[#f5af19] 
+          text-white text-xs font-bold uppercase 
+          py-1.5 px-6 rounded-full shadow-lg">
+          MÁS POPULAR
+        </div>
+      )}
+
+      <div 
+        className={cn(
+          "relative inline-flex overflow-hidden rounded-lg p-[1px] flex-grow group cursor-pointer transition-transform duration-300 ease-in-out",
+          plan.highlighted ? "scale-[1.05] z-10" : "hover:scale-[1.025]"
         )}
+        onClick={onClick}
+      >
+        {/* Fondo animado girando */}
+        <span 
+          className={cn(
+            "absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#4f46e5_0%,#9333ea_50%,#2563eb_100%)]",
+            !plan.highlighted ? "opacity-50 group-hover:opacity-80 transition duration-500" : "opacity-0"
+          )} 
+        />
         
-        <h3 className={`text-lg font-bold text-white mb-4 mt-2 ${
-          plan.highlighted 
-            ? 'bg-codecima-purple inline-block px-3 py-1 rounded-md' 
-            : 'bg-codecima-blue inline-block px-3 py-1 rounded-md'
-        }`}>
-          {plan.name}
-        </h3>
-        
-        <div className="text-white mb-3">{plan.description}</div>
-        
-        <div className="mb-6 mt-8">
-          <span className="text-4xl font-bold text-white">
-            USD {plan.price}
-          </span>
-        </div>
-        
-        <div className="space-y-4 mb-6 text-left">
-          {plan.features.slice(0, 6).map((feature, i) => (
-            feature.included && (
-              <div key={i} className="flex items-center">
-                <CheckCircle 
-                  className="text-codecima-blue mr-3 flex-shrink-0" 
-                  size={20} 
-                />
-                <span className="text-white text-sm">
-                  {feature.text}
-                </span>
-              </div>
-            )
-          ))}
-        </div>
-        
-        <Button 
-          className={`w-full mt-2 ${
+        {/* Resplandor al hover */}
+        <span 
+          className={cn(
+            "absolute inset-0 rounded-lg bg-white opacity-0 group-hover:opacity-10 blur-xl transition duration-500",
+            !plan.highlighted ? "block" : "hidden"
+          )} 
+        />
+
+        {/* Contenido de la tarjeta */}
+        <div 
+          className={cn(
+            "relative z-10 rounded-lg p-6 pt-8 text-center flex-grow flex flex-col backdrop-blur-xl",
             plan.highlighted 
-              ? 'bg-codecima-purple hover:bg-codecima-purple/80 text-white' 
-              : 'bg-codecima-blue hover:bg-codecima-blue/80 text-white'
-          }`}
+              ? "bg-gradient-to-br from-[#fc4a1a] via-[#f7b733] to-[#4facfe] text-white" 
+              : "bg-gradient-to-br from-codecima-darkblue/90 to-blue-900/90 text-white"
+          )}
         >
-          ¡Lo quiero! - 10% DCTO
-        </Button>
+          {/* Título del Plan */}
+          <h3 className={cn(
+            "text-lg font-bold mb-4 mt-2 inline-block px-3 py-1 rounded-md",
+            plan.highlighted 
+              ? "bg-white text-black" 
+              : "bg-codecima-blue text-white"
+          )}>
+            {plan.name}
+          </h3>
+
+          {/* Descripción del Plan */}
+          <div className="text-white/90 mb-4 min-h-[50px]">{plan.description}</div>
+
+          {/* Precio del Plan */}
+          <div className="mb-6">
+            <span className="text-4xl font-bold">USD {plan.price}</span>
+          </div>
+
+          {/* Lista de Características */}
+          <div className="space-y-3 mb-8 text-left flex-grow">
+            {plan.features.slice(0, 6).map((feature, i) => (
+              feature.included && (
+                <div key={i} className="flex items-center">
+                  <CheckCircle 
+                    className={cn(
+                      "mr-3 flex-shrink-0",
+                      plan.highlighted ? "text-white" : "text-codecima-blue"
+                    )} 
+                    size={20} 
+                  />
+                  <span className="text-white/90 text-sm">{feature.text}</span>
+                </div>
+              )
+            ))}
+          </div>
+
+          {/* Botón de Acción */}
+          <div className="mt-auto">
+            <GlowButton className="w-full">
+              ¡Lo quiero! - 30% DCTO
+            </GlowButton>
+          </div>
+        </div>
       </div>
-    </Card>
+    </div>
   );
 };
 

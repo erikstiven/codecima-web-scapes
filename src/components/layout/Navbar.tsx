@@ -1,9 +1,8 @@
-
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Rocket } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Rocket } from "lucide-react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,55 +20,65 @@ const Navbar: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Inicio', path: '/' },
-    { name: 'Productos', path: '/productos' },
-    { name: 'Portafolio', path: '/portafolio' },
-    { name: 'Precios', path: '/precios' },
-    { name: 'Nosotros', path: '/nosotros' },
-    { name: 'Contacto', path: '/contacto' },
+    { name: "Inicio", path: "/" },
+    { name: "Productos", path: "/productos" },
+    { name: "Portafolio", path: "/portafolio" },
+    { name: "Precios", path: "/precios" },
+    { name: "Nosotros", path: "/nosotros" },
+    { name: "Contacto", path: "/contacto" },
   ];
 
   return (
-    <motion.nav 
+    <motion.nav
       className={`fixed w-full z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-codecima-navy/90 backdrop-blur-md shadow-md py-2' 
-          : 'bg-transparent py-4'
+        scrolled
+          ? "bg-codecima-navy/90 backdrop-blur-md shadow-md py-2"
+          : "bg-transparent py-4"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+      transition={{ type: "spring", stiffness: 120, damping: 20 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <motion.div 
+          <motion.div
             className="flex items-center"
             whileHover={{ scale: 1.05 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <div className="flex items-center">
-                <motion.span 
-                  className="text-codecima-blue font-bold text-xl"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  CODE
-                </motion.span>
-                <motion.span 
-                  className="text-white font-bold text-xl"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  CIMA
-                </motion.span>
+              <div className="flex items-center gap-2">
+                <motion.img
+                  src="/public/images/logo-codecima.png"
+                  alt="Logo Codecima"
+                  className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                />
+                <div className="flex items-center">
+                  <motion.span
+                    className="text-codecima-blue font-bold text-xl"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    CODE
+                  </motion.span>
+                  <motion.span
+                    className="text-white font-bold text-xl"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                  >
+                    CIMA
+                  </motion.span>
+                </div>
               </div>
             </Link>
           </motion.div>
@@ -88,8 +97,8 @@ const Navbar: React.FC = () => {
                   to={link.path}
                   className={`px-2 py-2 text-sm font-medium transition-colors relative ${
                     location.pathname === link.path
-                      ? 'text-codecima-blue'
-                      : 'text-gray-300 hover:text-white'
+                      ? "text-codecima-blue"
+                      : "text-gray-300 hover:text-white"
                   }`}
                 >
                   {link.name}
@@ -97,7 +106,11 @@ const Navbar: React.FC = () => {
                     <motion.div
                       className="absolute bottom-0 left-0 w-full h-0.5 bg-codecima-blue"
                       layoutId="navbar-indicator"
-                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </Link>
@@ -110,7 +123,10 @@ const Navbar: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button asChild className="bg-codecima-blue hover:bg-codecima-blue/80 font-semibold">
+              <Button
+                asChild
+                className="bg-codecima-blue hover:bg-codecima-blue/80 font-semibold"
+              >
                 <Link to="/cotizar">
                   <Rocket size={16} className="mr-2" />
                   ¡Empezar!
@@ -134,10 +150,10 @@ const Navbar: React.FC = () => {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <motion.div 
+        <motion.div
           className="md:hidden bg-codecima-navy/95 backdrop-blur-md shadow-lg"
           initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
+          animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
         >
@@ -153,8 +169,8 @@ const Navbar: React.FC = () => {
                   to={link.path}
                   className={`block px-3 py-2 rounded-md text-base font-medium ${
                     location.pathname === link.path
-                      ? 'text-codecima-blue bg-codecima-darkblue/30'
-                      : 'text-gray-300 hover:text-white hover:bg-codecima-darkblue/10'
+                      ? "text-codecima-blue bg-codecima-darkblue/30"
+                      : "text-gray-300 hover:text-white hover:bg-codecima-darkblue/10"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -168,7 +184,10 @@ const Navbar: React.FC = () => {
               transition={{ duration: 0.3, delay: 0.3 }}
               className="pt-2"
             >
-              <Button asChild className="w-full bg-codecima-blue hover:bg-codecima-blue/80">
+              <Button
+                asChild
+                className="w-full bg-codecima-blue hover:bg-codecima-blue/80"
+              >
                 <Link to="/cotizar" onClick={() => setIsMenuOpen(false)}>
                   <Rocket size={16} className="mr-2" />
                   ¡Empezar!

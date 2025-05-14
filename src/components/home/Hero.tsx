@@ -28,11 +28,11 @@ const techLogos = [
 ];
 
 const FloatingTechBar = () => (
-  <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-0 flex gap-6">
+  <div className="relative z-10 flex flex-wrap justify-center gap-3 sm:gap-4 px-4 mt-6">
     {techLogos.map((logo, i) => (
       <motion.div
         key={i}
-        className="w-16 h-16 p-2 bg-white/20 backdrop-blur-sm rounded-full cursor-pointer"
+        className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 p-2 bg-white/20 backdrop-blur-sm rounded-full cursor-pointer"
         whileHover={{
           scale: 1.2,
           boxShadow: "0 0 16px rgba(255,255,255,0.4)",
@@ -58,29 +58,25 @@ const FloatingTechBar = () => (
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen pt-28 pb-32 overflow-hidden text-white bg-gradient-to-br from-[#0a0a23] via-[#110028] to-[#0c0c25]">
-      
-      {/* Fondo separado */}
+    <section className="relative min-h-screen pt-28 pb-36 overflow-hidden text-white bg-gradient-to-br from-[#0a0a23] via-[#110028] to-[#0c0c25]">
       <SpaceHeroBackground />
 
-      {/* Contenido principal */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* IZQUIERDA: Texto y botones */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div
-            className="space-y-6"
+            className="space-y-6 text-center md:text-left"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
               <span className="text-codecima-blue">Desarrollo Web</span>
               <br />
               <span className="text-purple-500">Personalizado</span>{" "}
               <span className="text-purple-500">y Escalable</span>
             </h1>
 
-            <p className="text-gray-300 text-lg max-w-xl">
+            <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl mx-auto md:mx-0">
               Impulsamos el crecimiento de{" "}
               <span className="text-codecima-blue font-medium">
                 empresas privadas
@@ -93,19 +89,32 @@ const Hero = () => {
               <span className="text-codecima-blue font-medium">
                 emprendimientos
               </span>{" "}
-              mediante el desarrollo de páginas web, plataformas y sistemas a medida.
+              mediante el desarrollo de páginas web, plataformas y sistemas a
+              medida.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <GlowButton>
-                <Play className="mr-2 h-4 w-4" />
-                Ver Video
-              </GlowButton>
-              <GlowButton>Solicita una cotización →</GlowButton>
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+              <a
+                href="https://www.youtube.com/watch?v=j3wGF6A1hSw"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GlowButton>
+                  <Play className="mr-2 h-4 w-4" />
+                  Ver Video
+                </GlowButton>
+              </a>
+
+              <a
+                href="https://wa.me/593999406026"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GlowButton>Solicita una cotización →</GlowButton>
+              </a>
             </div>
 
-            {/* Íconos destacados */}
-            <div className="flex flex-wrap gap-6 pt-4 text-sm text-gray-300">
+            <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-4 text-sm text-gray-300">
               <div className="flex items-center gap-2">
                 <Code className="text-codecima-blue" size={18} />
                 Código limpio
@@ -121,24 +130,30 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* DERECHA: Imagen animada */}
-          <motion.div
-            className="flex justify-center"
-            initial={{ scale: 1 }}
-            animate={{ scale: [1.10, 1, 1.10] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <img
-              src="/images/img-hero.png"
-              alt="Hero"
-              className="w-full max-w-md drop-shadow-[0_0_10px_rgba(0,0,0,0.4)]"
-            />
-          </motion.div>
+          <motion.img
+            src="/images/img-hero.png"
+            alt="Hero"
+            className="w-10/12 max-w-[320px] sm:max-w-sm md:max-w-md lg:max-w-lg drop-shadow-[0_0_10px_rgba(0,0,0,0.4)]"
+            animate={{
+              y: [0, -4, 0], // más suave
+              scale: [1, 1.005, 1], // casi imperceptible respiración
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+
+        {/* Logos tech debajo en móvil */}
+        <div className="mt-10 block md:hidden">
+          <FloatingTechBar />
+        </div>
+        <div className="hidden md:block mt-10">
+          <FloatingTechBar />
         </div>
       </div>
-
-      {/* Logos tech flotando */}
-      <FloatingTechBar />
     </section>
   );
 };

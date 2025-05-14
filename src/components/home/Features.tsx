@@ -1,63 +1,87 @@
-
-import React from 'react';
-import { Smartphone, Settings, Activity, FileCheck, Clock, BarChart } from 'lucide-react';
+import React from "react";
+import {
+  Smartphone,
+  Settings,
+  Activity,
+  FileCheck,
+  Clock,
+  BarChart,
+  ShieldCheck,
+} from "lucide-react";
 
 const Features = () => {
   const features = [
     {
-      icon: <Smartphone />,
-      title: 'App Android',
-      description: 'La aplicación móvil permite revisar y experimentar fácil en dispositivos Android, conectándose a sus locutores'
-    },
-    {
       icon: <Settings />,
-      title: 'Sistema adaptable',
-      description: 'Adaptable a los diversos necesidades de tus clientes, integrando nuevas funcionalidades y personalización'
-    },
-    {
-      icon: <Activity />,
-      title: 'Integración con GPS',
-      description: 'Ofrecemos seguimiento mediante tecnología de GPS mediante APIs para el seguimiento en tiempo real de vehículos'
+      title: "Panel Administrable",
+      description:
+        "Modifica el contenido de tu sitio sin conocimientos técnicos desde un panel seguro y fácil de usar.",
     },
     {
       icon: <FileCheck />,
-      title: 'Facturación Electrónica',
-      description: 'Emite facturas electrónicas desde nuestro facturador e integra con servicios para cobrarlos en línea'
+      title: "Pasarela de Pagos",
+      description:
+        "Acepta pagos en línea con integración a Stripe, PayPhone o PayPal en tu tienda o plataforma.",
     },
     {
-      icon: <Clock />,
-      title: 'Soporte 24/7',
-      description: 'Contamos con un equipo dedicado para resolver dudas y problemas en cualquier momento que lo necesites'
+      icon: <Smartphone />,
+      title: "Diseño Adaptable & App Android",
+      description:
+        "Tu sitio web se verá increíble en móviles, tablets y PCs. Además, puedes transformarlo en una app Android.",
     },
     {
       icon: <BarChart />,
-      title: 'Reportes en tiempo real',
-      description: 'Visualiza datos actualizados al instante para tomar decisiones basadas en información precisa del negocio'
-    }
+      title: "Dashboard con estadísticas",
+      description:
+        "Visualiza datos en tiempo real para tomar decisiones informadas con gráficos dinámicos e intuitivos.",
+    },
+    {
+      icon: <ShieldCheck />,
+      title: "Seguridad avanzada",
+      description:
+        "Protección con autenticación segura, roles de acceso, encriptación y actualizaciones periódicas.",
+    },
+    {
+      icon: <Clock />,
+      title: "Optimización SEO y carga rápida",
+      description:
+        "Diseñado para posicionar en Google y ofrecer una experiencia veloz incluso en conexiones lentas.",
+    },
   ];
 
   return (
-    <section className="py-16 relative">
-      <div className="absolute inset-0 bg-gradient-radial from-codecima-blue/5 to-transparent"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-24 bg-gradient-to-b from-[#0a0a23] via-[#0b0b2b] to-[#0a0a23] border-y border-codecima-blue/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-3">
             <span className="text-white">Fortalece tu empresa con estas </span>
             <span className="text-codecima-blue">Herramientas</span>
           </h2>
-          <p className="text-gray-400">Hechas para incrementar la productividad de tu empresa</p>
+          <p className="text-gray-400">
+            Hechas para incrementar la productividad de tu empresa
+          </p>
         </div>
-        
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="p-6 rounded-lg bg-codecima-darkblue/50 border border-codecima-blue/10 hover:border-codecima-blue/30 transition-all hover:bg-codecima-darkblue/70 group">
-              <div className="text-codecima-blue mb-4 p-3 bg-codecima-blue/10 rounded-lg inline-block group-hover:bg-codecima-blue/20 transition-colors">
-                {React.cloneElement(feature.icon, { size: 24 })}
-              </div>
-              
-              <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-              <p className="text-gray-400 text-sm">{feature.description}</p>
+            <div
+              key={index}
+              className="relative inline-flex h-full w-full rounded-xl p-[1px] overflow-hidden group"
+            >
+              {/* Borde animado como en CompanyLogos */}
+              <span className="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#4f46e5_0%,#9333ea_50%,#2563eb_100%)]" />
+
+              {/* Contenido interno */}
+              <span className="relative z-10 inline-flex h-full w-full flex-col items-start justify-start gap-4 rounded-xl bg-codecima-navy p-6 backdrop-blur-xl transition-transform group-hover:scale-[1.01]">
+                <div className="text-codecima-blue p-3 bg-codecima-blue/10 rounded-lg inline-block group-hover:bg-codecima-blue/20 transition-colors">
+                  {React.cloneElement(feature.icon, { size: 24 })}
+                </div>
+
+                <h3 className="text-xl font-semibold text-white">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-400 text-sm">{feature.description}</p>
+              </span>
             </div>
           ))}
         </div>

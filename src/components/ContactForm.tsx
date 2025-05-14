@@ -1,118 +1,156 @@
-
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { User, Phone, Mail, Building, ChevronDown, Send } from 'lucide-react';
+import React, { useEffect, useRef, useState } from "react";
+import GlowButton from "@/components/ui/GlowButton";
+import {
+  User,
+  Phone,
+  Mail,
+  Building,
+  ChevronDown,
+  Send,
+  Laptop,
+  Globe,
+} from "lucide-react";
 
 const ContactForm: React.FC = () => {
-  const [selectedSoftware, setSelectedSoftware] = useState('');
+  const [selectedSoftwareLabel, setSelectedSoftwareLabel] = useState("Elije un software");
+  const [softwareDropdownOpen, setSoftwareDropdownOpen] = useState(false);
   const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
-  
-  const toggleCountryDropdown = () => {
-    setCountryDropdownOpen(!countryDropdownOpen);
-  };
+  const [selectedCountry, setSelectedCountry] = useState("Ecuador");
+  const [countryList, setCountryList] = useState<string[]>([]);
+
+  const softwareRef = useRef<HTMLDivElement>(null);
+  const countryRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all?fields=name")
+      .then((res) => res.json())
+      .then((data) => {
+        const sorted = data
+          .map((c: any) => c.name.common)
+          .sort((a: string, b: string) => a.localeCompare(b));
+        setCountryList(sorted);
+      });
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        softwareRef.current && !softwareRef.current.contains(e.target as Node)
+      ) setSoftwareDropdownOpen(false);
+
+      if (
+        countryRef.current && !countryRef.current.contains(e.target as Node)
+      ) setCountryDropdownOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const inputFields = [
+    { placeholder: "Tu nombre completo", icon: <User size={20} />, type: "text" },
+    { placeholder: "Número de WhatsApp (09...)", icon: <Phone size={20} />, type: "tel" },
+    { placeholder: "Correo electrónico", icon: <Mail size={20} />, type: "email" },
+    { placeholder: "RUC (13 dígitos)", icon: <Building size={20} />, type: "text" },
+  ];
 
   return (
-    <div className="bg-codecima-darkblue rounded-lg p-6 shadow-lg border-2 border-codecima-blue/50 hover:border-codecima-blue transition-all">
-      <div className="space-y-4">
-        <div className="flex items-center bg-codecima-navy/80 border border-codecima-blue/20 rounded-md px-4 py-3">
-          <User className="text-codecima-lightblue mr-2" size={20} />
-          <input
-            type="text"
-            placeholder="Escribe tu nombre"
-            className="bg-transparent w-full text-gray-300 placeholder-gray-500 focus:outline-none"
-          />
-        </div>
-        
-        <div className="flex items-center bg-codecima-navy/80 border border-codecima-blue/20 rounded-md px-4 py-3">
-          <Phone className="text-codecima-lightblue mr-2" size={20} />
-          <input
-            type="tel"
-            placeholder="Escribe tu WhatsApp"
-            className="bg-transparent w-full text-gray-300 placeholder-gray-500 focus:outline-none"
-          />
-        </div>
-        
-        <div className="flex items-center bg-codecima-navy/80 border border-codecima-blue/20 rounded-md px-4 py-3">
-          <Mail className="text-codecima-lightblue mr-2" size={20} />
-          <input
-            type="email"
-            placeholder="Escribe tu correo"
-            className="bg-transparent w-full text-gray-300 placeholder-gray-500 focus:outline-none"
-          />
-        </div>
-        
-        <div className="flex items-center bg-codecima-navy/80 border border-codecima-blue/20 rounded-md px-4 py-3">
-          <Building className="text-codecima-lightblue mr-2" size={20} />
-          <input
-            type="text"
-            placeholder="Escribe tu RUC o NIT"
-            className="bg-transparent w-full text-gray-300 placeholder-gray-500 focus:outline-none"
-          />
-        </div>
-        
-        <div className="flex space-x-2">
-          <div className="flex-1 relative bg-codecima-navy/80 border border-codecima-blue/20 rounded-md px-4 py-3">
-            <div className="flex justify-between items-center w-full">
-              <select
-                className="bg-transparent w-full text-gray-300 focus:outline-none appearance-none"
-                value={selectedSoftware}
-                onChange={(e) => setSelectedSoftware(e.target.value)}
-              >
-                <option value="" disabled selected className="text-gray-500">Elije un software</option>
-                <option value="carga-pesada" className="bg-codecima-navy text-white">Carga Pesada</option>
-                <option value="paqueteria" className="bg-codecima-navy text-white">Paquetería</option>
-                <option value="personalizado" className="bg-codecima-navy text-white">Personalizado</option>
-              </select>
-              <ChevronDown size={16} className="text-gray-400" />
-            </div>
-          </div>
-          
-          <div className="relative">
-            <div 
-              className="flex items-center justify-between bg-codecima-navy/80 border border-codecima-blue/20 rounded-md px-4 py-3 cursor-pointer min-w-[120px]"
-              onClick={toggleCountryDropdown}
+    <div className="relative max-w-xl mx-auto my-16 p-[2px] rounded-2xl overflow-hidden group">
+      {/* Borde giratorio animado */}
+      <span className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#4f46e5_0%,#9333ea_50%,#2563eb_100%)] opacity-50" />
+
+      {/* Glow al pasar */}
+      <span className="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-10 blur-xl transition duration-500" />
+
+      {/* Contenido del formulario */}
+      <div className="relative z-10 bg-[#0b0b23] rounded-2xl p-6 sm:p-8 shadow-xl backdrop-blur-xl">
+        <form className="space-y-4">
+          {inputFields.map((field, idx) => (
+            <div
+              key={idx}
+              className="bg-[#0c0c25] border border-codecima-blue/20 hover:border-codecima-blue/40 transition rounded-md px-4 py-3 flex items-center"
             >
-              <span className="text-gray-300">Perú</span>
-              <ChevronDown size={16} className="text-gray-400 ml-2" />
+              <span className="text-codecima-lightblue mr-2">{field.icon}</span>
+              <input
+                type={field.type}
+                placeholder={field.placeholder}
+                className="bg-transparent w-full text-gray-300 placeholder-gray-500 focus:outline-none"
+              />
             </div>
-            
+          ))}
+
+           {/* Selector de país */}
+           <div
+            ref={countryRef}
+            onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
+            className="relative bg-[#0c0c25] border border-codecima-blue/20 hover:border-codecima-blue/40 transition rounded-md px-4 py-3 flex items-center"
+          >
+            <div className="flex items-center">
+              <Globe size={20} className="text-codecima-lightblue mr-2" />
+              <span className="text-gray-300">{selectedCountry}</span>
+            </div>
+            <ChevronDown size={16} className="text-gray-400 ml-auto" />
             {countryDropdownOpen && (
-              <div className="absolute z-10 mt-1 w-full rounded-md bg-codecima-navy shadow-lg border border-codecima-blue/20">
-                <div className="py-1">
-                  <button 
+              <div className="absolute top-full left-0 mt-1 max-h-60 overflow-y-auto w-full rounded-md bg-codecima-navy z-50 border border-codecima-blue/20">
+                {countryList.map((country) => (
+                  <button
+                    key={country}
                     className="block px-4 py-2 text-sm text-gray-300 hover:bg-codecima-blue/20 w-full text-left"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSelectedCountry(country);
                       setCountryDropdownOpen(false);
                     }}
                   >
-                    Perú
+                    {country}
                   </button>
-                  <button 
-                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-codecima-blue/20 w-full text-left"
-                    onClick={() => {
-                      setCountryDropdownOpen(false);
-                    }}
-                  >
-                    Colombia
-                  </button>
-                  <button 
-                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-codecima-blue/20 w-full text-left"
-                    onClick={() => {
-                      setCountryDropdownOpen(false);
-                    }}
-                  >
-                    México
-                  </button>
-                </div>
+                ))}
               </div>
             )}
           </div>
-        </div>
-        
-        <Button className="w-full bg-codecima-blue hover:bg-codecima-blue/80 text-white py-3 rounded-md flex items-center justify-center">
-          <Send className="mr-2 h-4 w-4" />
-          <span>SOLICITAR AHORA</span>
-        </Button>
+
+          {/* Selector de software */}
+          <div
+            ref={softwareRef}
+            onClick={() => setSoftwareDropdownOpen(!softwareDropdownOpen)}
+            className="relative bg-[#0c0c25] border border-codecima-blue/20 hover:border-codecima-blue/40 transition rounded-md px-4 py-3 flex items-center"
+          >
+            <div className="flex items-center">
+              <Laptop size={20} className="text-codecima-lightblue mr-2" />
+              <span className={`text-gray-300 ${selectedSoftwareLabel === "Elije un software" ? "text-gray-500" : ""}`}>
+                {selectedSoftwareLabel}
+              </span>
+            </div>
+            <ChevronDown size={16} className="text-gray-400 ml-auto" />
+            {softwareDropdownOpen && (
+              <div className="absolute top-full left-0 mt-1 w-full rounded-md bg-codecima-navy z-50 border border-codecima-blue/20">
+                {["Carga Pesada", "Paquetería", "Personalizado"].map((option) => (
+                  <button
+                    key={option}
+                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-codecima-blue/20 w-full text-left"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSelectedSoftwareLabel(option);
+                      setSoftwareDropdownOpen(false);
+                    }}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+         
+
+          {/* Botón enviar */}
+          <div className="pt-2">
+            <GlowButton className="w-full justify-center">
+              <Send className="mr-2 h-4 w-4" />
+              <span>SOLICITAR AHORA</span>
+            </GlowButton>
+          </div>
+        </form>
       </div>
     </div>
   );
