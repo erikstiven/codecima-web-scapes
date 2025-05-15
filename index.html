@@ -1,28 +1,49 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" prefix="og: http://ogp.me/ns#">
   <head>
+    <!-- Metadata básica -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeCima</title>
-    <meta name="description" content="Software personalizado para empresas de transporte de Carga Pesada y Paquetería" />
+    <title>CodeCima - Desarrollo Web y Software a Medida</title>
+    <meta name="description" content="Creamos software a medida y páginas web profesionales para empresas en Ecuador. Optimiza tus procesos con tecnología de calidad." />
     <meta name="author" content="CodeCima" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0a0a1b" />
+    <meta name="color-scheme" content="dark light" />
 
-    <meta property="og:title" content="CodeCima" />
-    <meta property="og:description" content="Software personalizado para empresas de transporte de Carga Pesada y Paquetería" />
+    <!-- Open Graph (Facebook y otros) -->
+    <meta property="og:title" content="CodeCima - Desarrollo Web y Software a Medida" />
+    <meta property="og:description" content="Creamos software a medida y páginas web profesionales para empresas. Solicita una demo gratuita." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:locale" content="es_EC" />
+    <meta property="og:site_name" content="CodeCima" />
+    <meta property="og:url" content="https://www.codecima.com.ec/" />
+    <meta property="og:image" content="https://www.codecima.com.ec/images/preview.webp" />
+    <meta property="og:image:alt" content="Vista previa de soluciones web de CodeCima" />
 
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@codecima" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:creator" content="@codecima" />
+    <meta name="twitter:title" content="CodeCima - Desarrollo Web y Software a Medida" />
+    <meta name="twitter:description" content="Desarrollo de sistemas, páginas web y soluciones digitales para empresas. Código optimizado y diseño profesional." />
+    <meta name="twitter:image" content="https://www.codecima.com.ec/images/preview.webp" />
 
-    <!-- ✅ Favicon agregado -->
+    <!-- Iconos -->
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- SEO & Rendimiento -->
+    <link rel="canonical" href="https://www.codecima.com.ec/" />
+    <link rel="preload" as="image" href="/images/img-hero.webp" type="image/webp" />
+
+    <!-- Seguridad -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
   </head>
 
   <body>
     <div id="root"></div>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
