@@ -132,7 +132,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.img
-            src="/images/img-hero.png"
+            src="/images/img-hero.webp"
             alt="Desarrollador creando soluciones web escalables para empresas"
             loading="lazy"
             className="w-10/12 max-w-[320px] sm:max-w-sm md:max-w-md lg:max-w-lg drop-shadow-[0_0_10px_rgba(0,0,0,0.4)]"

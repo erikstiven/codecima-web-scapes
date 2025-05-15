@@ -4,22 +4,22 @@ const CompanyLogos = () => {
   const logos = [
     {
       alt: "Eudaimonia",
-      src: "/public/images/CompanyLogos/eudaimonia-logo.png",
+      src: "/public/images/CompanyLogos/eudaimonia-logo.webp",
       url: "https://www.codecima.com",
     },
     {
       alt: "TropicTrade",
-      src: "/public/images/CompanyLogos/tropictrade-logo.png",
+      src: "/public/images/CompanyLogos/tropictrade-logo.webp",
       url: "https://www.tropictradesas.com/",
     },
     {
       alt: "BetaDent",
-      src: "/public/images/CompanyLogos/betadent-logo.png",
+      src: "/public/images/CompanyLogos/betadent-logo.webp",
       url: "https://dent.codecima.com/",
     },
     {
       alt: "Zahofer Dental",
-      src: "/public/images/CompanyLogos/zahofer-logo.png",
+      src: "/public/images/CompanyLogos/zahofer-logo.webp",
       url: "https://zahofer.codecima.com/",
     },
     

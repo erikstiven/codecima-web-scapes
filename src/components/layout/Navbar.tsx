@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Rocket } from "lucide-react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const Navbar: React.FC = () => {
@@ -13,11 +12,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -34,156 +29,88 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <motion.nav
-      className={`fixed w-full z-50 transition-all duration-500 ${
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled
           ? "bg-codecima-navy/90 backdrop-blur-md shadow-md py-2"
           : "bg-transparent py-4"
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 120, damping: 20 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <motion.div
-            className="flex items-center"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          >
-            <Link to="/" className="flex-shrink-0 flex items-center">
-              <div className="flex items-center gap-2">
-                <motion.img
-                  src="/public/images/logo-codecima.png"
-                  alt="Logo Codecima"
-                  className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4 }}
-                />
-                <div className="flex items-center">
-                  <motion.span
-                    className="text-codecima-blue font-bold text-xl"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    CODE
-                  </motion.span>
-                  <motion.span
-                    className="text-white font-bold text-xl"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                  >
-                    CIMA
-                  </motion.span>
-                </div>
-              </div>
+          {/* Logo */}
+          <div className="flex items-center">
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src="/public/images/logo-codecima.webp"
+                alt="Logo Codecima"
+                className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+              />
+              <span className="text-codecima-blue font-bold text-xl">CODE</span>
+              <span className="text-white font-bold text-xl">CIMA</span>
             </Link>
-          </motion.div>
-
-          {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link, index) => (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                whileHover={{ y: -3 }}
-              >
-                <Link
-                  to={link.path}
-                  className={`px-2 py-2 text-sm font-medium transition-colors relative ${
-                    location.pathname === link.path
-                      ? "text-codecima-blue"
-                      : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  {link.name}
-                  {location.pathname === link.path && (
-                    <motion.div
-                      className="absolute bottom-0 left-0 w-full h-0.5 bg-codecima-blue"
-                      layoutId="navbar-indicator"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                </Link>
-              </motion.div>
-            ))}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button
-                asChild
-                className="bg-codecima-blue hover:bg-codecima-blue/80 font-semibold"
-              >
-                <Link to="/cotizar">
-                  <Rocket size={16} className="mr-2" />
-                  ¡Empezar!
-                </Link>
-              </Button>
-            </motion.div>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`px-2 py-2 text-sm font-medium transition-colors relative ${
+                  location.pathname === link.path
+                    ? "text-codecima-blue"
+                    : "text-gray-300 hover:text-white"
+                }`}
+              >
+                {link.name}
+                {location.pathname === link.path && (
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-codecima-blue" />
+                )}
+              </Link>
+            ))}
+            <Button
+              asChild
+              className="bg-codecima-blue hover:bg-codecima-blue/80 font-semibold"
+            >
+              <Link to="/cotizar">
+                <Rocket size={16} className="mr-2" />
+                ¡Empezar!
+              </Link>
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <motion.button
+            <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-codecima-darkblue/20 focus:outline-none"
-              whileTap={{ scale: 0.9 }}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <motion.div
-          className="md:hidden bg-codecima-navy/95 backdrop-blur-md shadow-lg"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-        >
+        <div className="md:hidden bg-codecima-navy/95 backdrop-blur-md shadow-lg">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link, index) => (
-              <motion.div
+            {navLinks.map((link) => (
+              <Link
                 key={link.name}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.2, delay: index * 0.05 }}
+                to={link.path}
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  location.pathname === link.path
+                    ? "text-codecima-blue bg-codecima-darkblue/30"
+                    : "text-gray-300 hover:text-white hover:bg-codecima-darkblue/10"
+                }`}
+                onClick={() => setIsMenuOpen(false)}
               >
-                <Link
-                  to={link.path}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
-                    location.pathname === link.path
-                      ? "text-codecima-blue bg-codecima-darkblue/30"
-                      : "text-gray-300 hover:text-white hover:bg-codecima-darkblue/10"
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
+                {link.name}
+              </Link>
             ))}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-              className="pt-2"
-            >
+            <div className="pt-2">
               <Button
                 asChild
                 className="w-full bg-codecima-blue hover:bg-codecima-blue/80"
@@ -193,11 +120,11 @@ const Navbar: React.FC = () => {
                   ¡Empezar!
                 </Link>
               </Button>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       )}
-    </motion.nav>
+    </nav>
   );
 };
 

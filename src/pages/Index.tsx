@@ -76,7 +76,7 @@ const Index = () => {
                 "Reportes automáticos",
                 "Aprobaciones jerárquicas por rol",
               ]}
-              imageUrl="/images/coltalent-pc.png"
+              imageUrl="/images/coltalent-pc.webp"
               link="https://coltalent.com/"
               contactLink="https://wa.me/593999406026"
             />
@@ -95,7 +95,7 @@ const Index = () => {
                 "Roles de usuario por área",
                 "Acceso desde cualquier dispositivo",
               ]}
-              imageUrl="/images/colta-en-linea-pc.png"
+              imageUrl="/images/colta-en-linea-pc.webp"
               reversed
               link="https://colta-en-linea.com/"
               contactLink="https://wa.me/593999406026"

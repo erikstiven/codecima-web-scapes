@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import Seo from "@/components/Seo";
 import PricingTabs from "@/components/pricing/PricingTabs";
-import GuaranteeSection from "@/components/pricing/GuaranteeSection";
-import GlowButton from "@/components/ui/GlowButton";
 import { Shield, CheckCircle } from "lucide-react";
 
 const Precios = () => {
@@ -17,17 +16,21 @@ const Precios = () => {
 
   return (
     <Layout>
+      <Seo
+        title="Precios | CodeCima"
+        description="Planes de desarrollo web, tiendas online y software a medida. Conoce nuestros precios y beneficios como hosting gratis y chatbot incluido."
+        keywords="precios desarrollo web, planes CodeCima, hosting y dominio incluidos, chatbot gratis"
+        image="/images/preview.webp"
+        url="https://www.codecima.com.ec/precios"
+      />
+
       <section className="pt-24 pb-16 w-full bg-gradient-to-b from-[#0a0a1b] via-[#0a0a23] to-[#0b0b2b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.6,
-              type: "spring",
-              stiffness: 100,
-            }}
+            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
           >
             <motion.h1
               className="text-4xl font-bold mb-3 text-white"
@@ -35,14 +38,10 @@ const Precios = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Nuestros{" "}
+              Nuestros {" "}
               <motion.span
                 className="text-codecima-purple"
-                whileHover={{
-                  scale: 1.05,
-                  color: "#8B5CF6",
-                  transition: { duration: 0.2 },
-                }}
+                whileHover={{ scale: 1.05, color: "#8B5CF6", transition: { duration: 0.2 } }}
               >
                 Precios
               </motion.span>
@@ -73,7 +72,7 @@ const Precios = () => {
           >
             <div className="max-w mx-auto px-8 sm:px-2 lg:px-8">
               <div className="flex items-center justify-center mb-4">
-                <Shield className="text-codecima-blue mr-2" size={24} />
+                <Shield className="text-codecima-blue mr-2" size={24} aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-white">
                   Garantía de satisfacción
                 </h2>
@@ -83,6 +82,7 @@ const Precios = () => {
                   <CheckCircle
                     className="text-codecima-blue mr-2 mt-0.5 flex-shrink-0"
                     size={18}
+                    aria-hidden="true"
                   />
                   <span className="text-gray-300">
                     Soporte técnico 24/7 incluido en todos los planes
@@ -92,16 +92,17 @@ const Precios = () => {
                   <CheckCircle
                     className="text-codecima-blue mr-2 mt-0.5 flex-shrink-0"
                     size={18}
+                    aria-hidden="true"
                   />
                   <span className="text-gray-300">
-                    Si no estás satisfecho, te devolvemos tu dinero en los
-                    primeros 30 días
+                    Si no estás satisfecho, te devolvemos tu dinero en los primeros 30 días
                   </span>
                 </div>
                 <div className="flex items-start justify-center">
                   <CheckCircle
                     className="text-codecima-blue mr-2 mt-0.5 flex-shrink-0"
                     size={18}
+                    aria-hidden="true"
                   />
                   <span className="text-gray-300">
                     Upgrades y actualizaciones gratuitas durante el primer año
