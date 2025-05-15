@@ -1,9 +1,10 @@
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Rutas
 import Index from "./pages/Index";
 import Productos from "./pages/Productos";
 import Portafolio from "./pages/Portafolio";
@@ -17,27 +18,29 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/productos" element={<Productos />} />
-          <Route path="/portafolio" element={<Portafolio />} />
-          <Route path="/precios" element={<Precios />} />
-          <Route path="/precios/:categoryId/:planId" element={<PlanDetails />} />
-          <Route path="/nosotros" element={<Nosotros />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/cotizar" element={<Cotizar />} />
-          <Route path="/legal" element={<Legal />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/productos" element={<Productos />} />
+            <Route path="/portafolio" element={<Portafolio />} />
+            <Route path="/precios" element={<Precios />} />
+            <Route path="/precios/:categoryId/:planId" element={<PlanDetails />} />
+            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/contacto" element={<Contacto />} />
+            <Route path="/cotizar" element={<Cotizar />} />
+            <Route path="/legal" element={<Legal />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Toaster />
+          <Sonner />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

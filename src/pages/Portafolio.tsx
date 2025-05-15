@@ -90,12 +90,12 @@ const Portafolio = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Encabezado */}
           <div className="text-center mb-12 text-white">
-            <h2 className="text-codecima-blue text-lg font-medium mb-2">
+            <h1 className="text-codecima-blue text-lg font-medium mb-2">
               Nuestro Portafolio
-            </h2>
-            <h1 className="text-4xl font-bold mb-3">Proyectos destacados</h1>
+            </h1>
+            <h2 className="text-4xl font-bold mb-3">Proyectos destacados</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Descubre nuestras soluciones tecnológicas implementadas para clientes en diversos sectores
+              Descubre nuestras soluciones tecnológicas implementadas para clientes en diversos sectores.
             </p>
           </div>
 
@@ -111,6 +111,7 @@ const Portafolio = () => {
                       ? "bg-codecima-blue text-white"
                       : "text-gray-400 hover:text-white"
                   }`}
+                  aria-label={`Mostrar categoría ${category.name}`}
                 >
                   {category.name}
                 </button>
@@ -140,8 +141,8 @@ const Portafolio = () => {
                         <img
                           src={project.image}
                           alt={project.title}
-                          width={400}
-                          height={200}
+                          width={640}
+                          height={360}
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
@@ -157,9 +158,9 @@ const Portafolio = () => {
                       </p>
                       <div className="mt-auto flex justify-between items-center w-full">
                         <span className="text-gray-400 text-xs">{project.client}</span>
-                        <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Ver detalles de ${project.title}`}>
                           <button className="flex items-center gap-1 text-sm px-4 py-2 border border-codecima-blue/50 text-white rounded-xl hover:border-codecima-blue hover:text-codecima-blue transition-colors duration-300">
-                            Ver detalles <ArrowRight className="w-4 h-4" />
+                            Ver detalles <ArrowRight className="w-4 h-4" aria-hidden="true" />
                           </button>
                         </a>
                       </div>
