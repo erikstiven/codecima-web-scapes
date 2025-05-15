@@ -55,7 +55,6 @@ const Index = () => {
         </motion.div>
       </motion.div>
 
-      {/* Sección de tarjetas con fondo oscuro */}
       <section className="bg-gradient-to-b from-[#0a0a1b] via-[#0a0a23] to-[#0b0b2b] pt-24 pb-24">
         <motion.div
           variants={containerVariants}

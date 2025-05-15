@@ -48,7 +48,7 @@ const SoftwareSection: React.FC<SoftwareSectionProps> = ({
               <p className="text-gray-400 text-sm">{description}</p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              {features.map((feature, i) => (
+                {features.map((feature, i) => (
                   <div
                     key={i}
                     className="flex items-start gap-2 text-gray-300 text-sm"
@@ -63,11 +63,11 @@ const SoftwareSection: React.FC<SoftwareSectionProps> = ({
               </div>
 
               <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-6">
-                <Link to={contactLink}>
+                <Link to={contactLink} aria-label="Solicitar asesoría">
                   <GlowButton>Solicitar Asesoría</GlowButton>
                 </Link>
 
-                <Link to={link}>
+                <Link to={link} aria-label="Ver más del proyecto">
                   <GlowButton>
                     Ver Más <ChevronRight size={16} className="ml-2" />
                   </GlowButton>
@@ -78,23 +78,21 @@ const SoftwareSection: React.FC<SoftwareSectionProps> = ({
             {/* Imagen */}
             <motion.div
               className="w-full flex justify-center items-center px-2 md:px-6 py-0"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <a href={link} target="_blank" rel="noopener noreferrer">
+              <a href={link} target="_blank" rel="noopener noreferrer" aria-label={`Ir a ${subtitle}`}>
                 <motion.img
                   src={imageUrl}
                   alt={`Vista del sistema ${subtitle}`}
                   loading="lazy"
+                  width={800}
+                  height={450}
                   className="w-full max-w-[600px] h-auto drop-shadow-2xl cursor-pointer"
                   animate={{ y: [0, -10, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 />
               </a>
             </motion.div>

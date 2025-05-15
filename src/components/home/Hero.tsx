@@ -50,6 +50,8 @@ const FloatingTechBar = () => (
           src={logo.src}
           alt={logo.alt}
           loading="lazy"
+          width={40}
+          height={40}
           className="w-full h-full object-contain opacity-60"
         />
       </motion.div>
@@ -59,39 +61,34 @@ const FloatingTechBar = () => (
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen pt-28 pb-36 overflow-hidden text-white bg-gradient-to-br from-[#0a0a23] via-[#110028] to-[#0c0c25]">
+    <section
+      className="relative min-h-screen pt-28 pb-36 overflow-hidden text-white bg-[#0a0a23]"
+      aria-label="Hero: Desarrollo Web Personalizado"
+    >
       <SpaceHeroBackground />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div
             className="space-y-6 text-center md:text-left"
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
           >
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
               <span className="text-codecima-blue">Desarrollo Web</span>
               <br />
-              <span className="text-purple-500">Personalizado</span>{" "}
-              <span className="text-purple-500">y Escalable</span>
+              <span className="text-purple-500">Personalizado</span>
+              <span className="text-purple-500"> y Escalable</span>
             </h1>
 
             <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl mx-auto md:mx-0">
-              Impulsamos el crecimiento de{" "}
-              <span className="text-codecima-blue font-medium">
-                empresas privadas
-              </span>
-              ,{" "}
-              <span className="text-codecima-blue font-medium">
-                grandes corporativos
-              </span>{" "}
-              y{" "}
-              <span className="text-codecima-blue font-medium">
-                emprendimientos
-              </span>{" "}
-              mediante el desarrollo de páginas web, plataformas y sistemas a
-              medida.
+              Impulsamos el crecimiento de
+              <span className="text-codecima-blue font-medium"> empresas privadas</span>,
+              <span className="text-codecima-blue font-medium"> grandes corporativos</span>
+              y
+              <span className="text-codecima-blue font-medium"> emprendimientos</span>
+              mediante el desarrollo de páginas web, plataformas y sistemas a medida.
             </p>
 
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
@@ -99,6 +96,7 @@ const Hero = () => {
                 href="https://www.youtube.com/watch?v=j3wGF6A1hSw"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Ver video de presentación"
               >
                 <GlowButton>
                   <Play className="mr-2 h-4 w-4" />
@@ -110,6 +108,7 @@ const Hero = () => {
                 href="https://wa.me/593999406026"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Solicitar cotización por WhatsApp"
               >
                 <GlowButton>Solicita una cotización →</GlowButton>
               </a>
@@ -135,6 +134,8 @@ const Hero = () => {
             src="/images/img-hero.webp"
             alt="Desarrollador creando soluciones web escalables para empresas"
             loading="lazy"
+            width={640}
+            height={400}
             className="w-10/12 max-w-[320px] sm:max-w-sm md:max-w-md lg:max-w-lg drop-shadow-[0_0_10px_rgba(0,0,0,0.4)]"
             animate={{ y: [0, -4, 0], scale: [1, 1.005, 1] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}

@@ -54,7 +54,7 @@ const Productos = () => {
           icon: Database,
         },
       ],
-      image: "/public/images/coltalent-pc.webp",
+      image: "/images/coltalent-pc.webp",
       color: "codecima-blue",
     },
     {
@@ -93,7 +93,7 @@ const Productos = () => {
           icon: Shield,
         },
       ],
-      image: "/public/images/colta-en-linea-pc.webp",
+      image: "/images/colta-en-linea-pc.webp",
       color: "codecima-purple",
     },
   ];
