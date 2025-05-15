@@ -86,7 +86,7 @@ const Portafolio = () => {
         url="https://www.codecima.com.ec/portafolio"
       />
 
-      <section className="min-h-screen pt-24 pb-16 w-full bg-[#0a0a1b]">
+      <section className="min-h-screen pt-24 pb-32 w-full bg-[#0a0a1b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Encabezado */}
           <div className="text-center mb-12 text-white">
@@ -140,6 +140,8 @@ const Portafolio = () => {
                         <img
                           src={project.image}
                           alt={project.title}
+                          width={400}
+                          height={200}
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
