@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
 import GlowButton from "@/components/ui/GlowButton";
 import ThinGlowCard from "@/components/ui/ThinGlowCard";
@@ -21,52 +22,48 @@ const Portafolio = () => {
       description:
         "Sitio web corporativo para empresa exportadora de banano. Incluye presentación institucional, servicios, contacto, animaciones y diseño responsivo optimizado para captar clientes internacionales.",
       client: "Cliente: TropicTrade S.A.S",
-      image: "/public/images/Portafolio/tropictrade-portafolio.png", // usa la ruta real si tienes imagen local
+      image: "/images/Portafolio/tropictrade-portafolio.png",
       category: "web",
       link: "https://www.tropictradesas.com",
     },
-
     {
       id: 2,
       title: "Zahofer Dental",
       description:
         "Sitio web moderno para clínica odontológica. Incluye presentación de servicios dentales, información de contacto, botón de WhatsApp, optimización responsive y estructura pensada para convertir visitas en pacientes.",
       client: "Cliente: Zahofer Dental",
-      image: "/public/images/Portafolio/zahofer-portafolio.png", // reemplázalo con tu screenshot real
-      category: "web", // o "corporativas" si estás usando esa categoría
+      image: "/images/Portafolio/zahofer-portafolio.png",
+      category: "web",
       link: "https://zahofer.codecima.com",
     },
-
     {
       id: 3,
       title: "Betadent",
       description:
         "Página web profesional para clínica odontológica. Presenta los servicios dentales, perfil de la doctora, formulario de contacto, conexión con WhatsApp y diseño responsive optimizado para atraer pacientes desde dispositivos móviles.",
       client: "Cliente: Betadent",
-      image: "/public/images/Portafolio/betadent-portafolio.png", // reemplaza por tu captura real
+      image: "/images/Portafolio/betadent-portafolio.png",
       category: "web",
       link: "https://dent.codecima.com",
     },
-
     {
       id: 4,
       title: "ColTalent - Gestión de Talento Humano",
       description:
         "Sistema web desarrollado para la gestión integral de talento humano. Incluye módulos de permisos, historial laboral y académico, evaluaciones, aprobaciones por rol y perfil de empleado. Ideal para instituciones públicas que buscan digitalizar procesos internos.",
       client: "Cliente: GAD Municipal del Cantón Colta - Ecuador",
-      image: "/public/images/Portafolio/coltalent-portafolio.png", // usa tu captura real aquí
-      category: "sistemas", // o "institucionales" si usas ese nombre en el portafolio
+      image: "/images/Portafolio/coltalent-portafolio.png",
+      category: "sistemas",
       link: "https://coltalent.com",
     },
-
     {
       id: 5,
       title: "ColtaVirtual - Gestión de Trámites",
       description:
         "Sistema institucional para la gestión digital de trámites. Permite a los ciudadanos realizar solicitudes en línea, recibir notificaciones automáticas y hacer seguimiento del estado de sus trámites. Incluye panel administrativo, control por roles y acceso desde cualquier dispositivo.",
       client: "Cliente: GAD Municipal del Cantón Colta - Ecuador",
-      image: "/public/images/Portafolio/coltaenlinea-portafolio.png", // reemplaza con screenshot real
-      category: "sistemas", // o "institucionales" según cómo lo organices
+      image: "/images/Portafolio/coltaenlinea-portafolio.png",
+      category: "sistemas",
       link: "https://colta-en-linea.com",
     },
   ];
@@ -75,13 +72,11 @@ const Portafolio = () => {
   const [filteredProjects, setFilteredProjects] = useState(projects);
 
   useEffect(() => {
-    if (activeCategory === "todos") {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(
-        projects.filter((project) => project.category === activeCategory)
-      );
-    }
+    setFilteredProjects(
+      activeCategory === "todos"
+        ? projects
+        : projects.filter((project) => project.category === activeCategory)
+    );
   }, [activeCategory]);
 
   const containerVariants = {
@@ -103,6 +98,14 @@ const Portafolio = () => {
 
   return (
     <Layout>
+      <Seo
+        title="Portafolio | CodeCima"
+        description="Conoce los proyectos de páginas web, tiendas en línea y sistemas institucionales desarrollados por CodeCima."
+        keywords="portafolio desarrollo web, proyectos CodeCima, software Ecuador, clientes CodeCima"
+        image="/images/preview.webp"
+        url="https://www.codecima.com.ec/portafolio"
+      />
+
       <section className="pt-24 pb-16 w-full bg-gradient-to-b from-[#0a0a1b] via-[#0a0a23] to-[#0b0b2b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -118,8 +121,7 @@ const Portafolio = () => {
               Proyectos destacados
             </h1>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Descubre nuestras soluciones tecnológicas implementadas para
-              clientes en diversos sectores
+              Descubre nuestras soluciones tecnológicas implementadas para clientes en diversos sectores
             </p>
           </motion.div>
 
@@ -147,69 +149,62 @@ const Portafolio = () => {
           </motion.div>
 
           <motion.div
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${
-              filteredProjects.length <= 2 ? "justify-center" : ""
-            }`}
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${filteredProjects.length <= 2 ? "justify-center" : ""}`}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {/* Mostrar mensaje si no hay proyectos */}
-            {filteredProjects.length === 0 && (
+            {filteredProjects.length === 0 ? (
               <p className="text-gray-400 text-center col-span-full">
                 Aún no hay proyectos en esta categoría. ¡Pronto verás más!
               </p>
-            )}
+            ) : (
+              filteredProjects.map((project) => (
+                <motion.div key={project.id} variants={itemVariants}>
+                  <ThinGlowCard className="flex flex-col h-full">
+                    <div className="pt-6">
+                      <div className="relative">
+                        <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-10 bg-codecima-blue text-white text-sm font-semibold px-6 py-1 rounded-xl shadow-md whitespace-nowrap">
+                          {categories.find((cat) => cat.id === project.category)?.name}
+                        </div>
 
-            {filteredProjects.map((project) => (
-              <motion.div key={project.id} variants={itemVariants}>
-                <ThinGlowCard className="flex flex-col h-full">
-                  {/* Espacio superior interno */}
-                  <div className="pt-6">
-                    {/* Badge + Imagen */}
-                    <div className="relative">
-                      <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-10 bg-codecima-blue text-white text-sm font-semibold px-6 py-1 rounded-xl shadow-md whitespace-nowrap">
-                        {
-                          categories.find((cat) => cat.id === project.category)
-                            ?.name
-                        }
+                        <div className="aspect-video overflow-hidden rounded-2xl">
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                        </div>
                       </div>
 
-                      <div className="aspect-video overflow-hidden rounded-2xl">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 "
-                        />
-                      </div>
+                      <CardContent className="flex flex-col flex-grow px-0 pt-6 pb-6">
+                        <h3 className="text-xl font-semibold text-white mb-3">
+                          {project.title}
+                        </h3>
+                        <p className="text-gray-400 text-sm mb-4 flex-grow">
+                          {project.description}
+                        </p>
+                        <div className="mt-auto flex justify-between items-center w-full">
+                          <span className="text-gray-400 text-xs">
+                            {project.client}
+                          </span>
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <GlowButton>
+                              Ver detalles <ArrowRight className="ml-1 h-4 w-4" />
+                            </GlowButton>
+                          </a>
+                        </div>
+                      </CardContent>
                     </div>
-
-                    <CardContent className="flex flex-col flex-grow px-0 pt-6 pb-6">
-                      <h3 className="text-xl font-semibold text-white mb-3">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm mb-4 flex-grow">
-                        {project.description}
-                      </p>
-                      <div className="mt-auto flex justify-between items-center w-full">
-                        <span className="text-gray-400 text-xs">
-                          {project.client}
-                        </span>
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <GlowButton>
-                            Ver detalles <ArrowRight className="ml-1 h-4 w-4" />
-                          </GlowButton>
-                        </a>
-                      </div>
-                    </CardContent>
-                  </div>
-                </ThinGlowCard>
-              </motion.div>
-            ))}
+                  </ThinGlowCard>
+                </motion.div>
+              ))
+            )}
           </motion.div>
 
           <motion.div
