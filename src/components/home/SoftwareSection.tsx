@@ -34,30 +34,35 @@ const SoftwareSection: React.FC<SoftwareSectionProps> = ({
 
         <div className="relative z-10 bg-[#0b0b23] rounded-2xl overflow-hidden backdrop-blur-xl shadow-xl">
           <div
-            className={`grid md:grid-cols-2 items-center ${
-              reversed ? "flex-row-reverse" : ""
-            }`}
+            className={cn(
+              "flex flex-col md:flex-row items-center gap-8",
+              reversed && "md:flex-row-reverse"
+            )}
           >
-            <div className="p-10 space-y-6">
-              <h3 className="text-codecima-blue text-lg font-semibold">
+            {/* Texto */}
+            <div className="w-full p-10 space-y-6 text-center md:text-left">
+              <h2 className="text-codecima-blue text-lg font-semibold">
                 {title}
-              </h3>
-              <h2 className="text-2xl font-bold text-white">{subtitle}</h2>
+              </h2>
+              <h3 className="text-2xl font-bold text-white">{subtitle}</h3>
               <p className="text-gray-400 text-sm">{description}</p>
 
-              <div className="grid grid-cols-2 gap-4 pt-2">
-                {features.map((feature, i) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              {features.map((feature, i) => (
                   <div
                     key={i}
                     className="flex items-start gap-2 text-gray-300 text-sm"
                   >
-                    <CheckCircle className="text-codecima-blue w-4 h-4 mt-0.5" />
+                    <CheckCircle
+                      className="text-codecima-blue w-4 h-4 mt-0.5"
+                      aria-hidden="true"
+                    />
                     {feature}
                   </div>
                 ))}
               </div>
 
-              <div className="flex gap-4 pt-6">
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-6">
                 <Link to={contactLink}>
                   <GlowButton>Solicitar Asesoría</GlowButton>
                 </Link>
@@ -70,8 +75,9 @@ const SoftwareSection: React.FC<SoftwareSectionProps> = ({
               </div>
             </div>
 
+            {/* Imagen */}
             <motion.div
-              className="flex justify-center items-center px-2 md:px-6 py-0"
+              className="w-full flex justify-center items-center px-2 md:px-6 py-0"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
@@ -80,11 +86,10 @@ const SoftwareSection: React.FC<SoftwareSectionProps> = ({
               <a href={link} target="_blank" rel="noopener noreferrer">
                 <motion.img
                   src={imageUrl}
-                  alt={subtitle}
-                  className="w-full max-w-[1000px] h-auto drop-shadow-2xl cursor-pointer"
-                  animate={{
-                    y: [0, -10, 0],
-                  }}
+                  alt={`Vista del sistema ${subtitle}`}
+                  loading="lazy"
+                  className="w-full max-w-[600px] h-auto drop-shadow-2xl cursor-pointer"
+                  animate={{ y: [0, -10, 0] }}
                   transition={{
                     duration: 4,
                     repeat: Infinity,

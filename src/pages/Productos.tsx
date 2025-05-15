@@ -11,6 +11,7 @@ import {
   Users,
   FileCheck,
   Zap,
+  CheckCircle, 
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -141,12 +142,12 @@ const Productos = () => {
                 >
                   <span className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#4f46e5_0%,#9333ea_50%,#2563eb_100%)] opacity-30 rounded-2xl" />
                   <div className="relative z-10 bg-[#0b0b23] rounded-2xl overflow-hidden backdrop-blur-xl shadow-xl">
-                    <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
-                      <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-10">
+                    <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
+                      <div className="w-full lg:w-1/2 p-8 md:p-10">
                         <div
                           className={`inline-block ${bgColor} p-2 rounded-lg mb-3`}
                         >
-                          <Shield className={`${textColor}`} size={22} />
+                          <Shield className={textColor} size={22} />
                         </div>
                         <h3 className="text-xl font-medium text-codecima-blue mb-1">
                           {product.title}
@@ -154,25 +155,32 @@ const Productos = () => {
                         <h2 className="text-3xl font-bold mb-4 text-white">
                           {product.subtitle}
                         </h2>
-                        <p className="text-gray-300 mb-6 text-justify">
+                        <p className="text-gray-300 mb-8">
                           {product.description}
                         </p>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                           {product.features.map((feature, i) => (
-                            <div key={i} className="flex items-start">
-                              <ChevronRight
+                            <motion.div
+                              key={i}
+                              className="flex items-start"
+                              variants={fadeInUp}
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true }}
+                            >
+                              <CheckCircle
                                 className="text-codecima-blue mr-2 mt-0.5 flex-shrink-0"
                                 size={18}
                               />
                               <span className="text-gray-300 text-sm">
                                 {feature}
                               </span>
-                            </div>
+                            </motion.div>
                           ))}
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-2">
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-x-4 pt-0">
                           <a
                             href="https://wa.me/593999406026"
                             target="_blank"
@@ -205,7 +213,7 @@ const Productos = () => {
                         }
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full lg:w-1/2 px-4 sm:px-6 pt-2 sm:pt-0"
+                        className="w-full lg:w-1/2 min-h-[300px] sm:min-h-[350px] lg:min-h-[500px] mt-[-4px] block cursor-pointer group"
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true, amount: 0.4 }}
@@ -225,11 +233,69 @@ const Productos = () => {
                         />
                       </motion.a>
                     </div>
+
+                    <div className="p-8 md:p-10 border-t-2 border-codecima-blue/20">
+                      <h3 className="text-xl font-bold text-white mb-6">
+                        Beneficios principales
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {product.benefits.map((benefit, i) => (
+                          <motion.div
+                            key={i}
+                            className="bg-codecima-darkblue/50 border border-codecima-blue/30 rounded-lg p-5 hover:border-codecima-blue/60 transition-all cursor-pointer"
+                            whileHover={{ y: -5, scale: 1.02 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                          >
+                            <div className="bg-codecima-blue/10 p-3 rounded-lg inline-block mb-3">
+                              <benefit.icon
+                                className="text-codecima-blue"
+                                size={20}
+                              />
+                            </div>
+                            <h4 className="text-white font-semibold mb-2">
+                              {benefit.title}
+                            </h4>
+                            <p className="text-gray-400 text-sm">
+                              {benefit.description}
+                            </p>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
             })}
           </div>
+
+          <motion.div
+            className="mt-24 text-center p-10 bg-[#0b0b23] border border-codecima-blue/50 hover:border-codecima-blue/80 rounded-2xl transition-all"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold mb-3">
+              <span className="text-white">Hablemos de </span>
+              <span className="text-codecima-blue">negocios</span>
+            </h2>
+            <p className="text-codecima-blue font-semibold">
+              Solicita DEMOSTRACIÓN
+            </p>
+            <p className="text-gray-400 text-sm mb-8">
+              ¡Recibe asesoría de expertos!
+            </p>
+
+            <a
+              href="https://wa.me/593999406026"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GlowButton className="text-white">
+                Agendar una reunión
+              </GlowButton>
+            </a>
+          </motion.div>
         </div>
       </section>
     </Layout>

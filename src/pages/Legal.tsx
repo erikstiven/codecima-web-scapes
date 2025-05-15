@@ -1,100 +1,171 @@
-
-import React from 'react';
-import Layout from '@/components/layout/Layout';
+import React from "react";
+import Layout from "@/components/layout/Layout";
+import Seo from "@/components/Seo";
 
 const Legal = () => {
   return (
     <Layout>
+      <Seo
+        title="Términos y Políticas de Privacidad | CodeCima"
+        description="Consulta los términos de uso, condiciones de servicio y políticas de privacidad de CodeCima. Transparencia y compromiso con tus datos."
+        keywords="términos y condiciones CodeCima, política de privacidad, información legal, seguridad de datos, derechos del usuario"
+        image="/images/preview.webp"
+        url="https://www.codecima.com.ec/legal"
+      />
+
       <section className="pt-28 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Encabezado */}
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4 text-white">Información Legal</h1>
+            <h1 className="text-4xl font-bold mb-4 text-white">
+              Información Legal
+            </h1>
             <p className="text-gray-300">
               Términos, condiciones y políticas de CodeCima.
             </p>
           </div>
 
-          <div className="bg-codecima-darkblue/50 rounded-lg p-8 border border-codecima-blue/10 mb-8">
-            <h2 className="text-2xl font-bold text-white mb-4">Términos y Condiciones</h2>
-            
+          {/* Términos y Condiciones */}
+          <section
+            aria-labelledby="terminos"
+            className="bg-codecima-darkblue/50 rounded-lg p-8 border border-codecima-blue/10 mb-8"
+          >
+            <h2
+              id="terminos"
+              className="text-2xl font-bold text-white mb-4"
+            >
+              Términos y Condiciones
+            </h2>
+
             <div className="space-y-4 text-gray-300">
               <p>
-                Los siguientes términos y condiciones rigen el uso de los servicios ofrecidos por CodeCima, incluyendo el software, aplicaciones y sitio web. Al utilizar nuestros servicios, usted acepta estar sujeto a estos términos.
+                Los siguientes términos y condiciones rigen el uso de los
+                servicios ofrecidos por CodeCima, incluyendo el software,
+                aplicaciones y sitio web. Al utilizar nuestros servicios,
+                usted acepta estar sujeto a estos términos.
               </p>
-              
-              <h3 className="text-xl font-semibold text-white mt-6 mb-2">1. Uso del Servicio</h3>
+
+              <h3 className="text-xl font-semibold text-white mt-6 mb-2">
+                1. Uso del Servicio
+              </h3>
               <p>
-                Nuestros servicios están diseñados para ser utilizados por empresas y profesionales del sector transporte. Usted se compromete a utilizar nuestros servicios únicamente para fines legales y de acuerdo con estos términos.
+                Nuestros servicios están diseñados para empresas y
+                profesionales. Usted se compromete a usarlos únicamente con
+                fines legales y bajo estos términos.
               </p>
-              
-              <h3 className="text-xl font-semibold text-white mt-6 mb-2">2. Cuentas y Seguridad</h3>
+
+              <h3 className="text-xl font-semibold text-white mt-6 mb-2">
+                2. Cuentas y Seguridad
+              </h3>
               <p>
-                Al registrarse en nuestros servicios, usted es responsable de mantener la confidencialidad de su cuenta y contraseña, así como de restringir el acceso a su computadora. Usted acepta la responsabilidad por todas las actividades que ocurran bajo su cuenta.
+                Usted es responsable de su cuenta y contraseña. Toda
+                actividad bajo su cuenta es su responsabilidad.
               </p>
-              
-              <h3 className="text-xl font-semibold text-white mt-6 mb-2">3. Privacidad y Datos</h3>
+
+              <h3 className="text-xl font-semibold text-white mt-6 mb-2">
+                3. Privacidad y Datos
+              </h3>
               <p>
-                La recopilación y uso de información personal está regida por nuestra Política de Privacidad, que forma parte integral de estos términos y condiciones.
+                La información personal que recopilamos está protegida bajo
+                nuestra política de privacidad.
               </p>
-              
-              <h3 className="text-xl font-semibold text-white mt-6 mb-2">4. Derechos de Propiedad Intelectual</h3>
+
+              <h3 className="text-xl font-semibold text-white mt-6 mb-2">
+                4. Propiedad Intelectual
+              </h3>
               <p>
-                Todos los derechos de propiedad intelectual relacionados con nuestros servicios, incluyendo software, diseños, textos, gráficos y otros contenidos, son propiedad de CodeCima o sus licenciantes.
+                Todo el contenido y software son propiedad de CodeCima o sus
+                licenciantes.
               </p>
             </div>
-          </div>
-          
-          <div className="bg-codecima-darkblue/50 rounded-lg p-8 border border-codecima-blue/10 mb-8">
-            <h2 className="text-2xl font-bold text-white mb-4">Política de Privacidad</h2>
-            
+          </section>
+
+          {/* Política de Privacidad */}
+          <section
+            aria-labelledby="privacidad"
+            className="bg-codecima-darkblue/50 rounded-lg p-8 border border-codecima-blue/10 mb-8"
+          >
+            <h2
+              id="privacidad"
+              className="text-2xl font-bold text-white mb-4"
+            >
+              Política de Privacidad
+            </h2>
+
             <div className="space-y-4 text-gray-300">
               <p>
-                En CodeCima, respetamos su privacidad y nos comprometemos a proteger la información personal que compartimos. Esta política de privacidad explica cómo recopilamos, utilizamos y protegemos su información.
+                En CodeCima, protegemos tu privacidad. Aquí detallamos cómo
+                manejamos y protegemos tu información.
               </p>
-              
-              <h3 className="text-xl font-semibold text-white mt-6 mb-2">1. Información que Recopilamos</h3>
+
+              <h3 className="text-xl font-semibold text-white mt-6 mb-2">
+                1. Información que Recopilamos
+              </h3>
               <p>
-                Podemos recopilar información personal como nombres, direcciones de correo electrónico, números de teléfono e información de la empresa cuando usted se registra para utilizar nuestros servicios, completa formularios o se comunica con nosotros.
+                Recopilamos datos como nombres, correos electrónicos,
+                teléfonos y datos empresariales mediante formularios.
               </p>
-              
-              <h3 className="text-xl font-semibold text-white mt-6 mb-2">2. Uso de la Información</h3>
+
+              <h3 className="text-xl font-semibold text-white mt-6 mb-2">
+                2. Uso de la Información
+              </h3>
               <p>
-                Utilizamos la información recopilada para proporcionar y mejorar nuestros servicios, comunicarnos con usted, procesar pagos y cumplir con obligaciones legales.
+                Usamos tus datos para ofrecerte servicios, responderte,
+                procesar pagos y cumplir con obligaciones legales.
               </p>
-              
-              <h3 className="text-xl font-semibold text-white mt-6 mb-2">3. Protección de Datos</h3>
+
+              <h3 className="text-xl font-semibold text-white mt-6 mb-2">
+                3. Protección de Datos
+              </h3>
               <p>
-                Implementamos medidas de seguridad para proteger su información contra acceso no autorizado, alteración, divulgación o destrucción.
+                Aplicamos medidas de seguridad para evitar accesos no
+                autorizados o alteración de tus datos.
               </p>
-              
-              <h3 className="text-xl font-semibold text-white mt-6 mb-2">4. Derechos del Usuario</h3>
+
+              <h3 className="text-xl font-semibold text-white mt-6 mb-2">
+                4. Derechos del Usuario
+              </h3>
               <p>
-                Usted tiene derecho a acceder, corregir o eliminar su información personal. Para ejercer estos derechos, contáctenos a través de los medios proporcionados.
+                Puedes acceder, corregir o eliminar tus datos. Contáctanos
+                para ejercer estos derechos.
               </p>
             </div>
-          </div>
-          
-          <div className="bg-codecima-darkblue/50 rounded-lg p-8 border border-codecima-blue/10">
-            <h2 className="text-2xl font-bold text-white mb-4">Información de la Empresa</h2>
-            
+          </section>
+
+          {/* Información de la Empresa */}
+          <section
+            aria-labelledby="empresa"
+            className="bg-codecima-darkblue/50 rounded-lg p-8 border border-codecima-blue/10"
+          >
+            <h2
+              id="empresa"
+              className="text-2xl font-bold text-white mb-4"
+            >
+              Información de la Empresa
+            </h2>
+
             <div className="space-y-4 text-gray-300">
               <p>
-                <strong className="text-white">Nombre de la empresa:</strong> CodeCima S.A.C.
+                <strong className="text-white">Nombre de la empresa:</strong>{" "}
+                CodeCima
               </p>
               <p>
-                <strong className="text-white">RUC:</strong> 20XXXXXXXXX
+                <strong className="text-white">RUC:</strong> 0705871689001
               </p>
               <p>
-                <strong className="text-white">Dirección registrada:</strong> Av. N S. Calle Central, Ave. Lima, Perú
+                <strong className="text-white">Dirección:</strong> Ent. 1
+                ESPOCH, Riobamba 060155, Ecuador
               </p>
               <p>
-                <strong className="text-white">Correo electrónico:</strong> legal@codecima.com
+                <strong className="text-white">Correo electrónico:</strong>{" "}
+                info@codecima.com
               </p>
               <p>
-                <strong className="text-white">Teléfono:</strong> +51 964 891 044
+                <strong className="text-white">Teléfono:</strong>{" "}
+                +593 99 940 6026
               </p>
             </div>
-          </div>
+          </section>
         </div>
       </section>
     </Layout>

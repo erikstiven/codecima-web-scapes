@@ -7,23 +7,23 @@ import SpaceHeroBackground from "@/components/background/SpaceBackground";
 const techLogos = [
   {
     src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-    alt: "React",
+    alt: "Logo de React",
   },
   {
     src: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg",
-    alt: "Laravel",
+    alt: "Logo de Laravel",
   },
   {
     src: "https://cdn.iconscout.com/icon/free/png-256/free-node-js-logo-icon-download-in-svg-png-gif-file-formats--nodejs-programming-language-pack-logos-icons-1174925.png?f=webp&w=256",
-    alt: "Node.js",
+    alt: "Logo de Node.js",
   },
   {
     src: "https://www.svgrepo.com/show/374144/typescript.svg",
-    alt: "TypeScript",
+    alt: "Logo de TypeScript",
   },
   {
     src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
-    alt: "Tailwind CSS",
+    alt: "Logo de Tailwind CSS",
   },
 ];
 
@@ -49,6 +49,7 @@ const FloatingTechBar = () => (
         <img
           src={logo.src}
           alt={logo.alt}
+          loading="lazy"
           className="w-full h-full object-contain opacity-60"
         />
       </motion.div>
@@ -116,15 +117,15 @@ const Hero = () => {
 
             <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-4 text-sm text-gray-300">
               <div className="flex items-center gap-2">
-                <Code className="text-codecima-blue" size={18} />
+                <Code className="text-codecima-blue" size={18} aria-hidden="true" />
                 Código limpio
               </div>
               <div className="flex items-center gap-2">
-                <MonitorSmartphone className="text-codecima-blue" size={18} />
+                <MonitorSmartphone className="text-codecima-blue" size={18} aria-hidden="true" />
                 Responsive
               </div>
               <div className="flex items-center gap-2">
-                <Zap className="text-codecima-blue" size={18} />
+                <Zap className="text-codecima-blue" size={18} aria-hidden="true" />
                 Rápido y optimizado
               </div>
             </div>
@@ -132,21 +133,14 @@ const Hero = () => {
 
           <motion.img
             src="/images/img-hero.png"
-            alt="Hero"
+            alt="Desarrollador creando soluciones web escalables para empresas"
+            loading="lazy"
             className="w-10/12 max-w-[320px] sm:max-w-sm md:max-w-md lg:max-w-lg drop-shadow-[0_0_10px_rgba(0,0,0,0.4)]"
-            animate={{
-              y: [0, -4, 0], // más suave
-              scale: [1, 1.005, 1], // casi imperceptible respiración
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            animate={{ y: [0, -4, 0], scale: [1, 1.005, 1] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
 
-        {/* Logos tech debajo en móvil */}
         <div className="mt-10 block md:hidden">
           <FloatingTechBar />
         </div>

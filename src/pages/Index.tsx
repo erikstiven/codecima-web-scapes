@@ -6,6 +6,7 @@ import CompanyLogos from "@/components/home/CompanyLogos";
 import SoftwareSection from "@/components/home/SoftwareSection";
 import Features from "@/components/home/Features";
 import CallToAction from "@/components/home/CallToAction";
+import Seo from "@/components/Seo";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -33,6 +34,14 @@ const itemVariants = {
 const Index = () => {
   return (
     <Layout>
+      <Seo
+        title="CodeCima - Desarrollo Web y Hosting en Ecuador"
+        description="Creamos páginas web modernas y servicios de hosting desde Riobamba para todo el país. Posiciona tu marca con CodeCima."
+        keywords="desarrollo web Ecuador, páginas web Riobamba, diseño web, hosting económico"
+        image="/images/preview.webp"
+        url="https://www.codecima.com.ec"
+      />
+
       <Hero />
 
       <motion.div
@@ -67,7 +76,7 @@ const Index = () => {
                 "Reportes automáticos",
                 "Aprobaciones jerárquicas por rol",
               ]}
-              imageUrl="/public/images/coltalent-pc.png"
+              imageUrl="/images/coltalent-pc.png"
               link="https://coltalent.com/"
               contactLink="https://wa.me/593999406026"
             />
@@ -86,7 +95,7 @@ const Index = () => {
                 "Roles de usuario por área",
                 "Acceso desde cualquier dispositivo",
               ]}
-              imageUrl="/public/images/colta-en-linea-pc.png"
+              imageUrl="/images/colta-en-linea-pc.png"
               reversed
               link="https://colta-en-linea.com/"
               contactLink="https://wa.me/593999406026"
