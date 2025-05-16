@@ -64,7 +64,7 @@ const Index = () => {
         >
           <motion.div variants={itemVariants} className="mb-20">
             <SoftwareSection
-              title="Software para"
+              title="Plataforma para"
               subtitle="Gestión de Talento Humano - ColTalent"
               description="Automatiza y optimiza la administración del personal con ColTalent. Una herramienta versátil para instituciones públicas, privadas y emprendimientos que buscan eficiencia, transparencia y orden en su gestión de talento humano."
               features={[

@@ -63,13 +63,9 @@ const SoftwareSection: React.FC<SoftwareSectionProps> = ({
               </div>
 
               <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-6">
-                <Link to={contactLink} aria-label="Solicitar asesoría">
-                  <GlowButton>Solicitar Asesoría</GlowButton>
-                </Link>
-
                 <Link to={link} aria-label="Ver más del proyecto">
                   <GlowButton>
-                    Ver Más <ChevronRight size={16} className="ml-2" />
+                    Ver proyecto<ChevronRight size={16} className="ml-2" />
                   </GlowButton>
                 </Link>
               </div>

@@ -4,30 +4,29 @@ import GlowButton from "@/components/ui/GlowButton";
 import {
   ChevronRight,
   Shield,
-  Smartphone,
   Database,
   Server,
   Clock,
   Users,
   FileCheck,
   Zap,
-  CheckCircle, 
+  CheckCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Productos = () => {
   const products = [
     {
-      title: "Software para",
+      title: "Plataforma para",
       subtitle: "Gestión del Talento Humano",
       description:
         "ColTalent permite automatizar procesos como permisos, gestión de personal, control de asistencias y organigramas. Ideal para instituciones públicas o privadas que buscan eficiencia en su talento humano.",
       features: [
         "Módulo de permisos",
         "Organigrama funcional",
-        "Accesos con roles por nivel",
-        "Historial por usuario",
-        "App para responsables",
+        "Gestion de empleados",
+        "Reportes estadísticos",
+        "Roles y permisos",
         "Alojado en la nube",
       ],
       benefits: [
@@ -58,7 +57,7 @@ const Productos = () => {
       color: "codecima-blue",
     },
     {
-      title: "Software para",
+      title: "Plataforma para",
       subtitle: "Gestión de Trámites Municipales",
       description:
         "ColtaVirtual es un sistema para la digitalización de trámites, ideal para municipios y entidades públicas. Permite el seguimiento en línea y mejora la transparencia de las solicitudes.",
@@ -118,15 +117,17 @@ const Productos = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl font-bold mb-2 text-codecima-purple">
-              Softwares
+              Soluciones Digitales
             </h1>
             <h2 className="text-3xl font-bold mb-6">
-              <span className="text-white">Nuestras </span>
-              <span className="text-codecima-blue">Soluciones</span>
+              <span className="text-white">Software diseñado para </span>
+              <span className="text-codecima-blue">
+                empresas e instituciones
+              </span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Ofrecemos herramientas digitales que transforman y agilizan la
-              gestión pública y administrativa.
+              Optimizamos procesos operativos, administrativos y de atención con
+              sistemas web escalables adaptados a tus necesidades.
             </p>
           </motion.div>
 
@@ -144,11 +145,6 @@ const Productos = () => {
                   <div className="relative z-10 bg-[#0b0b23] rounded-2xl overflow-hidden backdrop-blur-xl shadow-xl">
                     <div className="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
                       <div className="w-full lg:w-1/2 p-8 md:p-10">
-                        <div
-                          className={`inline-block ${bgColor} p-2 rounded-lg mb-3`}
-                        >
-                          <Shield className={textColor} size={22} />
-                        </div>
                         <h3 className="text-xl font-medium text-codecima-blue mb-1">
                           {product.title}
                         </h3>
@@ -199,7 +195,8 @@ const Productos = () => {
                             rel="noopener noreferrer"
                           >
                             <GlowButton>
-                              Ver Más <ChevronRight size={16} className="ml-2" />
+                              Ver Más{" "}
+                              <ChevronRight size={16} className="ml-2" />
                             </GlowButton>
                           </a>
                         </div>
@@ -276,25 +273,39 @@ const Productos = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-bold mb-3">
-              <span className="text-white">Hablemos de </span>
-              <span className="text-codecima-blue">negocios</span>
+              <span className="text-white">¿Listo para impulsar tu </span>
+              <span className="text-codecima-blue">negocio?</span>
             </h2>
-            <p className="text-codecima-blue font-semibold">
-              Solicita DEMOSTRACIÓN
-            </p>
-            <p className="text-gray-400 text-sm mb-8">
-              ¡Recibe asesoría de expertos!
+
+            <p className="text-codecima-blue font-semibold mb-1">
+              Cuéntanos tu idea o proyecto
             </p>
 
-            <a
-              href="https://wa.me/593999406026"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GlowButton className="text-white">
-                Agendar una reunión
-              </GlowButton>
-            </a>
+            <p className="text-gray-400 text-sm mb-8">
+              Te ayudamos a hacerlo realidad con asesoría gratuita de nuestro
+              equipo.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://wa.me/593999406026?text=Hola%2C%20quisiera%20agendar%20una%20asesor%C3%ADa%20personalizada%20con%20el%20equipo%20de%20CodeCima."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="px-6 py-3 rounded-xl bg-codecima-blue text-white font-medium hover:bg-codecima-blue/90 transition">
+                  Agendar una reunión
+                </button>
+              </a>
+
+              <a
+                href="https://wa.me/593999406026?text=Hola%2C%20me%20interesan%20los%20productos%20de%20CodeCima%20y%20quiero%20más%20información."
+                target="_blank"
+                rel="noopener noreferrer"
+                className=" flex items-center justify-center font-medium border border-white/30 text-white rounded-xl px-4 py-2 hover:bg-white/10 transition"
+              >
+                Hablar por WhatsApp
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>

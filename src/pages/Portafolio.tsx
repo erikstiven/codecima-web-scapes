@@ -48,7 +48,7 @@ const Portafolio = () => {
       title: "ColTalent - Gestión de Talento Humano",
       description:
         "Sistema web desarrollado para la gestión integral de talento humano. Incluye módulos de permisos, historial laboral y académico, evaluaciones, aprobaciones por rol y perfil de empleado. Ideal para instituciones públicas que buscan digitalizar procesos internos.",
-      client: "Cliente: GAD Municipal del Cantón Colta - Ecuador",
+      client: "Cliente: GAD Municipal del Cantón Colta",
       image: "/images/Portafolio/coltalent-portafolio.webp",
       category: "sistemas",
       link: "https://coltalent.com",
@@ -58,7 +58,7 @@ const Portafolio = () => {
       title: "ColtaVirtual - Gestión de Trámites",
       description:
         "Sistema institucional para la gestión digital de trámites. Permite a los ciudadanos realizar solicitudes en línea, recibir notificaciones automáticas y hacer seguimiento del estado de sus trámites. Incluye panel administrativo, control por roles y acceso desde cualquier dispositivo.",
-      client: "Cliente: GAD Municipal del Cantón Colta - Ecuador",
+      client: "Cliente: GAD Municipal del Cantón Colta",
       image: "/images/Portafolio/coltaenlinea-portafolio.webp",
       category: "sistemas",
       link: "https://colta-en-linea.com",
@@ -156,8 +156,8 @@ const Portafolio = () => {
                       <p className="text-gray-400 text-sm mb-4 flex-grow">
                         {project.description}
                       </p>
-                      <div className="mt-auto flex justify-between items-center w-full">
-                        <span className="text-gray-400 text-xs">{project.client}</span>
+                      <div className="mt-auto flex justify-end">
+                       
                         <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Ver detalles de ${project.title}`}>
                           <button className="flex items-center gap-1 text-sm px-4 py-2 border border-codecima-blue/50 text-white rounded-xl hover:border-codecima-blue hover:text-codecima-blue transition-colors duration-300">
                             Ver detalles <ArrowRight className="w-4 h-4" aria-hidden="true" />

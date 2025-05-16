@@ -1,7 +1,8 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 import GlowButton from "@/components/ui/GlowButton";
-import { Code, MonitorSmartphone, Play, Zap } from "lucide-react";
+import { Code, MonitorSmartphone, Zap } from "lucide-react";
 import SpaceHeroBackground from "@/components/background/SpaceBackground";
 
 const techLogos = [
@@ -26,23 +27,19 @@ const techLogos = [
     alt: "Logo de Tailwind CSS",
   },
 ];
-
 const FloatingTechBar = () => (
   <div className="relative z-10 flex flex-wrap justify-center gap-3 sm:gap-4 px-4 mt-6">
     {techLogos.map((logo, i) => (
       <motion.div
         key={i}
-        className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 p-2 bg-white/20 backdrop-blur-sm rounded-full cursor-pointer"
-        whileHover={{
-          scale: 1.2,
-          boxShadow: "0 0 16px rgba(255,255,255,0.4)",
-          rotate: [0, 5, -5, 0],
-        }}
-        animate={{ y: [0, -8, 0] }}
+        className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 p-2 bg-white/10 rounded-full"
+        whileHover={{ scale: 1.1 }}
+        initial={{ y: 10, opacity: 0, filter: "blur(6px)" }}
+        animate={{ y: [10, -6, 0], opacity: 1, filter: "blur(0px)" }}
         transition={{
-          duration: 5 + Math.random(),
-          repeat: Infinity,
-          ease: "easeInOut",
+          duration: 1.5,
+          delay: i * 0.20,
+          ease: "easeOut",
         }}
         title={logo.alt}
       >
@@ -52,100 +49,135 @@ const FloatingTechBar = () => (
           loading="lazy"
           width={40}
           height={40}
-          className="w-full h-full object-contain opacity-60"
+          className="w-full h-full object-contain opacity-70"
         />
       </motion.div>
     ))}
   </div>
 );
 
+
 const Hero = () => {
   return (
     <section
       className="relative min-h-screen pt-28 pb-36 overflow-hidden text-white bg-[#0a0a23]"
-      aria-label="Hero: Desarrollo Web Personalizado"
+      aria-label="Sección principal: desarrollo de software"
     >
+      <Helmet>
+        <title>CodeCima | Desarrollo de Software a Medida para Empresas</title>
+        <meta
+          name="description"
+          content="Empresa de desarrollo de software a medida. Creamos landing pages, ecommerce y sistemas web escalables para empresas que buscan resultados reales."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="CodeCima" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#0a0a23" />
+        <meta property="og:title" content="CodeCima | Desarrollo de Software a Medida para Empresas" />
+        <meta
+          property="og:description"
+          content="Creamos soluciones digitales: landing pages, ecommerce y sistemas empresariales escalables para empresas que buscan destacar."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.codecima.com" />
+        <meta property="og:image" content="https://www.codecima.com/images/og-image.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="CodeCima | Desarrollo de Software a Medida para Empresas" />
+        <meta
+          name="twitter:description"
+          content="Landing pages, ecommerce y sistemas empresariales hechos a medida para tu empresa."
+        />
+        <meta name="twitter:image" content="https://www.codecima.com/images/og-image.webp" />
+        <link rel="canonical" href="https://www.codecima.com/" />
+        <link rel="preload" as="image" href="/images/img-hero.webp" />
+      </Helmet>
+
       <SpaceHeroBackground />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div
             className="space-y-6 text-center md:text-left"
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 1 }}
           >
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
-              <span className="text-codecima-blue">Desarrollo Web</span>
-              <br />
-              <span className="text-purple-500">Personalizado</span>
-              <span className="text-purple-500"> y Escalable</span>
-            </h1>
+            <motion.h1
+              className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
+              <span className="block text-codecima-blue">Creamos Soluciones</span>
+              <span className="block text-purple-500">que Impulsan tu Negocio</span>
+            </motion.h1>
 
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl mx-auto md:mx-0">
-              Impulsamos el crecimiento de
-              <span className="text-codecima-blue font-medium"> empresas privadas</span>,
-              <span className="text-codecima-blue font-medium"> grandes corporativos</span>
-              y
-              <span className="text-codecima-blue font-medium"> emprendimientos</span>
-              mediante el desarrollo de páginas web, plataformas y sistemas a medida.
-            </p>
+            <motion.p
+              className="text-sm text-codecima-blue font-semibold uppercase tracking-wide"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              Sitios web, tiendas online, plataformas empresariales
+            </motion.p>
 
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+            <motion.p
+              className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl mx-auto md:mx-0"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+            >
+              Somos una empresa de desarrollo enfocada en resultados. Diseñamos{' '}
+              <span className="text-codecima-blue font-medium">sitios rápidos, seguros y escalables</span>{' '}
+              que te ayudan a vender más, automatizar procesos y destacar online. Desde{' '}
+              <span className="text-codecima-blue font-medium">landing pages</span> hasta{' '}
+              <span className="text-codecima-blue font-medium">sistemas empresariales completos</span>.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-wrap justify-center md:justify-start gap-4"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+            >
               <a
-                href="https://www.youtube.com/watch?v=j3wGF6A1hSw"
+                href="https://wa.me/593999406026?text=Hola%2C%20estoy%20interesado%20en%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20desarrollo%20de%20software.%20%C2%BFPodr%C3%ADan%20ayudarme%20con%20una%20cotizaci%C3%B3n%20adaptada%20a%20mi%20empresa%3F"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Ver video de presentación"
-              >
-                <GlowButton>
-                  <Play className="mr-2 h-4 w-4" />
-                  Ver Video
-                </GlowButton>
-              </a>
-
-              <a
-                href="https://wa.me/593999406026"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Solicitar cotización por WhatsApp"
+                aria-label="Solicita tu cotización por WhatsApp"
               >
                 <GlowButton>Solicita una cotización →</GlowButton>
               </a>
-            </div>
 
-            <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-4 text-sm text-gray-300">
-              <div className="flex items-center gap-2">
-                <Code className="text-codecima-blue" size={18} aria-hidden="true" />
-                Código limpio
-              </div>
-              <div className="flex items-center gap-2">
-                <MonitorSmartphone className="text-codecima-blue" size={18} aria-hidden="true" />
-                Responsive
-              </div>
-              <div className="flex items-center gap-2">
-                <Zap className="text-codecima-blue" size={18} aria-hidden="true" />
-                Rápido y optimizado
-              </div>
-            </div>
+              <a
+                href="/portafolio"
+                className="text-sm flex items-center justify-center font-medium border border-white/30 text-white rounded-xl px-4 py-2 hover:bg-white/10 transition"
+                title="Ver proyectos desarrollados por CodeCima"
+              >
+                Ver Portafolio
+              </a>
+            </motion.div>
           </motion.div>
 
-          <motion.img
-            src="/images/img-hero.webp"
-            alt="Desarrollador creando soluciones web escalables para empresas"
-            loading="lazy"
-            width={640}
-            height={400}
-            className="w-10/12 max-w-[320px] sm:max-w-sm md:max-w-md lg:max-w-lg drop-shadow-[0_0_10px_rgba(0,0,0,0.4)]"
-            animate={{ y: [0, -4, 0], scale: [1, 1.005, 1] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1 }}
+          >
+            <motion.img
+              src="/images/img-hero.webp"
+              alt="Desarrollador creando soluciones digitales para empresas"
+              loading="lazy"
+              width={640}
+              height={400}
+              className="w-10/12 max-w-[320px] sm:max-w-sm md:max-w-md lg:max-w-lg drop-shadow-[0_0_10px_rgba(0,0,0,0.4)]"
+              animate={{ y: [0, -4, 0], scale: [1, 1.005, 1] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
         </div>
 
-        <div className="mt-10 block md:hidden">
-          <FloatingTechBar />
-        </div>
-        <div className="hidden md:block mt-10">
+        <div className="mt-10">
           <FloatingTechBar />
         </div>
       </div>

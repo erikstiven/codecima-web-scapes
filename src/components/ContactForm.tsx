@@ -14,13 +14,11 @@ const ContactForm: React.FC = () => {
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [correo, setCorreo] = useState("");
-  const [ruc, setRuc] = useState("");
-  const [pais, setPais] = useState("");
   const [mensaje, setMensaje] = useState("");
 
   return (
     <div
-      className="relative max-w-xl mx-auto my-16 p-[2px] rounded-2xl overflow-hidden group"
+      className="relative max-w-xl mx-auto  p-[2px] rounded-2xl overflow-hidden group"
       aria-labelledby="contact-form-heading"
     >
       <span className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#4f46e5_0%,#9333ea_50%,#2563eb_100%)] opacity-50" />
@@ -28,12 +26,20 @@ const ContactForm: React.FC = () => {
 
       <div className="relative z-10 bg-[#0b0b23] rounded-2xl p-6 sm:p-8 shadow-xl backdrop-blur-xl">
         <form className="space-y-4" aria-describedby="contact-form-heading">
-          <h2 id="contact-form-heading" className="sr-only">Formulario de contacto</h2>
+          <h2 id="contact-form-heading" className="sr-only">
+            Formulario de contacto
+          </h2>
 
           {/* Nombre */}
-          <label htmlFor="nombre" className="sr-only">Nombre completo</label>
+          <label htmlFor="nombre" className="sr-only">
+            Nombre completo
+          </label>
           <div className="bg-[#0c0c25] border border-codecima-blue/20 hover:border-codecima-blue/40 transition rounded-md px-4 py-3 flex items-center">
-            <User size={20} className="text-codecima-lightblue mr-2" aria-hidden="true" />
+            <User
+              size={20}
+              className="text-codecima-lightblue mr-2"
+              aria-hidden="true"
+            />
             <input
               id="nombre"
               type="text"
@@ -45,25 +51,16 @@ const ContactForm: React.FC = () => {
             />
           </div>
 
-          {/* Teléfono */}
-          <label htmlFor="telefono" className="sr-only">Número de WhatsApp</label>
-          <div className="bg-[#0c0c25] border border-codecima-blue/20 hover:border-codecima-blue/40 transition rounded-md px-4 py-3 flex items-center">
-            <Phone size={20} className="text-codecima-lightblue mr-2" aria-hidden="true" />
-            <input
-              id="telefono"
-              type="tel"
-              placeholder="Número de WhatsApp (09...)"
-              className="bg-transparent w-full text-gray-300 placeholder-gray-500 focus:outline-none"
-              value={telefono}
-              onChange={(e) => setTelefono(e.target.value)}
-              required
-            />
-          </div>
-
           {/* Correo */}
-          <label htmlFor="correo" className="sr-only">Correo electrónico</label>
+          <label htmlFor="correo" className="sr-only">
+            Correo electrónico
+          </label>
           <div className="bg-[#0c0c25] border border-codecima-blue/20 hover:border-codecima-blue/40 transition rounded-md px-4 py-3 flex items-center">
-            <Mail size={20} className="text-codecima-lightblue mr-2" aria-hidden="true" />
+            <Mail
+              size={20}
+              className="text-codecima-lightblue mr-2"
+              aria-hidden="true"
+            />
             <input
               id="correo"
               type="email"
@@ -75,38 +72,37 @@ const ContactForm: React.FC = () => {
             />
           </div>
 
-          {/* RUC */}
-          <label htmlFor="ruc" className="sr-only">RUC</label>
+          {/* Teléfono */}
+          <label htmlFor="telefono" className="sr-only">
+            Número de WhatsApp
+          </label>
           <div className="bg-[#0c0c25] border border-codecima-blue/20 hover:border-codecima-blue/40 transition rounded-md px-4 py-3 flex items-center">
-            <Building size={20} className="text-codecima-lightblue mr-2" aria-hidden="true" />
-            <input
-              id="ruc"
-              type="text"
-              placeholder="RUC (13 dígitos)"
-              className="bg-transparent w-full text-gray-300 placeholder-gray-500 focus:outline-none"
-              value={ruc}
-              onChange={(e) => setRuc(e.target.value)}
+            <Phone
+              size={20}
+              className="text-codecima-lightblue mr-2"
+              aria-hidden="true"
             />
-          </div>
-
-          {/* País */}
-          <label htmlFor="pais" className="sr-only">País</label>
-          <div className="bg-[#0c0c25] border border-codecima-blue/20 hover:border-codecima-blue/40 transition rounded-md px-4 py-3 flex items-center">
-            <Globe size={20} className="text-codecima-lightblue mr-2" aria-hidden="true" />
             <input
-              id="pais"
-              type="text"
-              placeholder="País de residencia"
+              id="telefono"
+              type="tel"
+              placeholder="Número de WhatsApp"
               className="bg-transparent w-full text-gray-300 placeholder-gray-500 focus:outline-none"
-              value={pais}
-              onChange={(e) => setPais(e.target.value)}
+              value={telefono}
+              onChange={(e) => setTelefono(e.target.value)}
+              required
             />
           </div>
 
           {/* Asunto / Mensaje */}
-          <label htmlFor="mensaje" className="sr-only">Mensaje principal</label>
+          <label htmlFor="mensaje" className="sr-only">
+            Mensaje principal
+          </label>
           <div className="bg-[#0c0c25] border border-codecima-blue/20 hover:border-codecima-blue/40 transition rounded-md px-4 py-3 flex items-center">
-            <MessageCircle size={20} className="text-codecima-lightblue mr-2" aria-hidden="true" />
+            <MessageCircle
+              size={20}
+              className="text-codecima-lightblue mr-2"
+              aria-hidden="true"
+            />
             <input
               id="mensaje"
               type="text"
@@ -123,12 +119,10 @@ const ContactForm: React.FC = () => {
             <a
               href={`https://wa.me/593999406026?text=${encodeURIComponent(
                 `Hola CodeCima, me gustaría solicitar una cotización.\n\n` +
-                `Nombre: ${nombre}\n` +
-                `WhatsApp: ${telefono}\n` +
-                `Correo: ${correo}\n` +
-                `RUC: ${ruc}\n` +
-                `País: ${pais}\n` +
-                `Mensaje: ${mensaje}`
+                  `Nombre: ${nombre}\n` +
+                  `Correo: ${correo}\n` +
+                  `WhatsApp: ${telefono}\n` +
+                  `Mensaje: ${mensaje}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -136,7 +130,7 @@ const ContactForm: React.FC = () => {
             >
               <GlowButton className="w-full justify-center">
                 <Send className="mr-2 h-4 w-4" aria-hidden="true" />
-                <span>Enviar mensaje por WhatsApp</span>
+                <span className="text-base">Enviar mensaje por WhatsApp</span>
               </GlowButton>
             </a>
           </div>

@@ -20,13 +20,14 @@ const CallToAction = () => {
             id="cta-heading"
             className="text-3xl sm:text-4xl font-bold mb-2 text-white"
           >
-            Hablemos de <span className="text-codecima-blue">negocios</span>
+            ¿Listo para impulsar tu{" "}
+            <span className="text-codecima-blue">negocio?</span>
           </h2>
           <p className="text-codecima-blue font-semibold">
-            Solicita DEMOSTRACIÓN
+            Cuéntanos tu idea o proyecto
           </p>
           <p className="text-gray-400 text-sm sm:text-base">
-            ¡Recibe asesoría de expertos!
+            Te ayudamos a hacerlo realidad.
           </p>
         </motion.div>
 

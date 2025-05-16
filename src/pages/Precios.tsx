@@ -16,14 +16,6 @@ const Precios = () => {
 
   return (
     <Layout>
-      <Seo
-        title="Precios | CodeCima"
-        description="Planes de desarrollo web, tiendas online y software a medida. Conoce nuestros precios y beneficios como hosting gratis y chatbot incluido."
-        keywords="precios desarrollo web, planes CodeCima, hosting y dominio incluidos, chatbot gratis"
-        image="/images/preview.webp"
-        url="https://www.codecima.com.ec/precios"
-      />
-
       <section className="pt-24 pb-16 w-full bg-gradient-to-b from-[#0a0a1b] via-[#0a0a23] to-[#0b0b2b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -38,10 +30,14 @@ const Precios = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Nuestros {" "}
+              Nuestros{" "}
               <motion.span
                 className="text-codecima-purple"
-                whileHover={{ scale: 1.05, color: "#8B5CF6", transition: { duration: 0.2 } }}
+                whileHover={{
+                  scale: 1.05,
+                  color: "#8B5CF6",
+                  transition: { duration: 0.2 },
+                }}
               >
                 Precios
               </motion.span>
@@ -64,52 +60,52 @@ const Precios = () => {
           />
 
           <motion.div
-            className="mt-24 text-center p-10 bg-[#0b0b23] border border-codecima-blue/50 hover:border-codecima-blue/80 rounded-2xl transition-all"
+            className="mt-24 text-center p-9 bg-[#0b0b23] border border-codecima-blue/50 hover:border-codecima-blue/80 rounded-2xl transition-all max-w-6xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="max-w mx-auto px-8 sm:px-2 lg:px-8">
-              <div className="flex items-center justify-center mb-4">
-                <Shield className="text-codecima-blue mr-2" size={24} aria-hidden="true" />
-                <h2 className="text-2xl font-bold text-white">
-                  Garantía de satisfacción
-                </h2>
-              </div>
-              <div className="space-y-3 max-w-2xl mx-auto">
-                <div className="flex items-start justify-center">
-                  <CheckCircle
-                    className="text-codecima-blue mr-2 mt-0.5 flex-shrink-0"
-                    size={18}
-                    aria-hidden="true"
-                  />
-                  <span className="text-gray-300">
-                    Soporte técnico 24/7 incluido en todos los planes
-                  </span>
-                </div>
-                <div className="flex items-start justify-center">
-                  <CheckCircle
-                    className="text-codecima-blue mr-2 mt-0.5 flex-shrink-0"
-                    size={18}
-                    aria-hidden="true"
-                  />
-                  <span className="text-gray-300">
-                    Si no estás satisfecho, te devolvemos tu dinero en los primeros 30 días
-                  </span>
-                </div>
-                <div className="flex items-start justify-center">
-                  <CheckCircle
-                    className="text-codecima-blue mr-2 mt-0.5 flex-shrink-0"
-                    size={18}
-                    aria-hidden="true"
-                  />
-                  <span className="text-gray-300">
-                    Upgrades y actualizaciones gratuitas durante el primer año
-                  </span>
-                </div>
-              </div>
+            <div className="flex flex-col items-center gap-2">
+              <Shield className="text-codecima-blue" size={40} />
+              <h3 className="text-white text-2xl font-bold">
+                Garantía de Satisfacción
+              </h3>
+              <p className="text-gray-400 max-w-2xl text-base mt-2">
+                Tu tranquilidad es lo primero. Todos nuestros planes incluyen:
+              </p>
             </div>
+
+            <ul className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 text-left text-white/90 max-w-4xl mx-auto">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="text-codecima-blue mt-1" size={18} />
+                <span>
+                  <strong>Soporte técnico 24/7</strong> incluido en todos los
+                  planes
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="text-codecima-blue mt-1" size={18} />
+                <span>
+                  <strong>Acompañamiento personalizado</strong> desde la
+                  planificación hasta el lanzamiento
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="text-codecima-blue mt-1" size={18} />
+                <span>
+                  <strong>Actualizaciones gratuitas</strong> durante el primer
+                  año
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="text-codecima-blue mt-1" size={18} />
+                <span>
+                  <strong>Mejoras continuas</strong> según feedback de nuestros
+                  clientes
+                </span>
+              </li>
+            </ul>
           </motion.div>
         </div>
       </section>

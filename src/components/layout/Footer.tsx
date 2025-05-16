@@ -8,7 +8,7 @@ import {
   Phone,
   Mail,
 } from "lucide-react";
-import { SiTiktok } from "react-icons/si"; // para TikTok
+import { SiTiktok } from "react-icons/si";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -17,27 +17,29 @@ const Footer: React.FC = () => {
     <footer className="bg-codecima-darkblue pt-16 pb-8 border-t border-codecima-blue/30 shadow-[0_-1px_0_0_rgba(53,182,255,0.15)] text-sm text-gray-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* TOP */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* LOGO & DESCRIPCIÓN */}
-          <div className="flex flex-col items-start -mt-2">
-            <div className="flex items-center gap-2 mb-3">
+          <div>
+            <div className="flex items-center gap-2 mb-4">
               <img
-                src="/public/images/logo-codecima.png"
+                src="/images/logo-codecima.webp"
                 alt="Logo Codecima"
-                className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                className="w-10 h-10 object-contain"
               />
-              <span className="text-codecima-blue font-bold text-xl">CODE</span>
-              <span className="text-white font-bold text-xl">CIMA</span>
+              <div className="text-xl font-bold">
+                <span className="text-codecima-blue">CODE</span>
+                <span className="text-white">CIMA</span>
+              </div>
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed text-justify">
-              Transformamos ideas en soluciones digitales para empresas
-              privadas, instituciones públicas y emprendimientos que buscan
-              destacar en un mundo cada vez más conectado.
+            <p className="text-gray-300 text-justify leading-relaxed text-sm">
+              Transformamos ideas en soluciones digitales para empresas privadas,
+              instituciones públicas y emprendimientos que buscan destacar en un
+              mundo cada vez más conectado.
             </p>
           </div>
 
           {/* EMPRESA */}
-          <div className="flex flex-col">
+          <div>
             <h3 className="text-white font-semibold mb-4">Empresa</h3>
             <ul className="space-y-3">
               <li>
@@ -59,7 +61,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* SERVICIOS */}
-          <div className="flex flex-col">
+          <div>
             <h3 className="text-white font-semibold mb-4">Servicios</h3>
             <ul className="space-y-3">
               <li>
@@ -81,41 +83,35 @@ const Footer: React.FC = () => {
           </div>
 
           {/* CONTACTO */}
-          <div className="flex flex-col">
+          <div>
             <h3 className="text-white font-semibold mb-4">Contacto</h3>
-            <ul className="space-y-4 text-sm">
-              <li className="flex items-start gap-2">
+            <ul className="space-y-4">
+              <li className="flex gap-3 items-center">
                 <Mail className="text-codecima-blue" size={18} />
                 <a
                   href="mailto:info@codecima.com"
-                  className="hover:text-codecima-blue"
+                  className="hover:text-codecima-blue break-words"
                 >
                   info@codecima.com
                 </a>
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex gap-3 items-center">
                 <Phone className="text-codecima-blue" size={18} />
-                <a
-                  href="tel:+593999406026"
-                  className="hover:text-codecima-blue"
-                >
+                <a href="tel:+593999406026" className="hover:text-codecima-blue">
                   +593 99 940 6026
                 </a>
               </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="text-codecima-blue" size={18} />
-                <div>
+              <li className="flex gap-3 items-start">
+                <MapPin className="text-codecima-blue mt-1" size={18} />
+                <div className="space-y-1">
                   <p>
-                    <span className="font-medium text-white">Matriz:</span>{" "}
-                    Riobamba, Ecuador
+                    <span className="font-medium text-white">Matriz:</span> Riobamba, Ecuador
                   </p>
                   <p>
-                    <span className="font-medium text-white">Sucursal 1:</span>{" "}
-                    Machala, Ecuador
+                    <span className="font-medium text-white">Sucursal 1:</span> Machala, Ecuador
                   </p>
                   <p>
-                    <span className="font-medium text-white">Sucursal 2:</span>{" "}
-                    Puyo, Ecuador
+                    <span className="font-medium text-white">Sucursal 2:</span> Puyo, Ecuador
                   </p>
                 </div>
               </li>

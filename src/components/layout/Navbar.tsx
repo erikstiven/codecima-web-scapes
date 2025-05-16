@@ -24,14 +24,16 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center gap-2">
+            <Link to="/" className=" flex items-center gap-2">
               <img
                 src="/images/logo-codecima.webp"
                 alt="Logo Codecima"
                 className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
               />
-              <span className="text-codecima-blue font-bold text-xl">CODE</span>
+              <div>
+                <span className="text-codecima-blue font-bold text-xl">CODE</span>
               <span className="text-white font-bold text-xl">CIMA</span>
+              </div>
             </Link>
           </div>
 

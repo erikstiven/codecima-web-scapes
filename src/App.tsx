@@ -15,6 +15,7 @@ import Contacto from "./pages/Contacto";
 import Cotizar from "./pages/Cotizar";
 import Legal from "./pages/Legal";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -23,12 +24,16 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/productos" element={<Productos />} />
             <Route path="/portafolio" element={<Portafolio />} />
             <Route path="/precios" element={<Precios />} />
-            <Route path="/precios/:categoryId/:planId" element={<PlanDetails />} />
+            <Route
+              path="/precios/:categoryId/:planId"
+              element={<PlanDetails />}
+            />
             <Route path="/nosotros" element={<Nosotros />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/cotizar" element={<Cotizar />} />

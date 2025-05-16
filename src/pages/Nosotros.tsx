@@ -21,12 +21,12 @@ const Nosotros = () => {
   ];
 
   const values = [
-    { icon: <Users size={24} aria-hidden="true" />, title: "Orientación al cliente", description: "Ponemos al cliente en el centro de todo lo que hacemos, adaptándonos a sus necesidades." },
-    { icon: <Code size={24} aria-hidden="true" />, title: "Excelencia técnica", description: "Nos comprometemos con el más alto estándar de calidad en nuestras soluciones." },
-    { icon: <Award size={24} aria-hidden="true" />, title: "Innovación constante", description: "Buscamos constantemente nuevas formas de mejorar y ofrecer soluciones de vanguardia." },
-    { icon: <Clock size={24} aria-hidden="true" />, title: "Compromiso con los plazos", description: "Entregamos en el tiempo acordado, respetando los cronogramas establecidos." },
-    { icon: <Globe size={24} aria-hidden="true" />, title: "Responsabilidad social", description: "Contribuimos positivamente a la sociedad a través de nuestras soluciones e iniciativas." },
-    { icon: <Zap size={24} aria-hidden="true" />, title: "Agilidad y adaptabilidad", description: "Nos adaptamos rápidamente a los cambios del mercado y a las necesidades de nuestros clientes." },
+    { title: "Orientación al cliente", description: "Ponemos al cliente en el centro de todo lo que hacemos, adaptándonos a sus necesidades." },
+    {  title: "Excelencia técnica", description: "Nos comprometemos con el más alto estándar de calidad en nuestras soluciones." },
+    {  title: "Innovación constante", description: "Buscamos constantemente nuevas formas de mejorar y ofrecer soluciones de vanguardia." },
+    {  title: "Compromiso con los plazos", description: "Entregamos en el tiempo acordado, respetando los cronogramas establecidos." },
+    {  title: "Responsabilidad social", description: "Contribuimos positivamente a la sociedad a través de nuestras soluciones e iniciativas." },
+    { title: "Agilidad y adaptabilidad", description: "Nos adaptamos rápidamente a los cambios del mercado y a las necesidades de nuestros clientes." },
   ];
 
   const teamMembers = [
@@ -45,8 +45,8 @@ const Nosotros = () => {
       icon: <Cpu size={24} aria-hidden="true" />,
     },
     {
-      name: "Erik Quisnia",
-      position: "Director de Marketing",
+      name: "Niurka Silva",
+      position: "Directora de Marketing",
       description: "Especialista en marketing digital con enfoque en el sector B2B. Responsable de nuestra estrategia de comunicación y crecimiento.",
       image: "https://previews.123rf.com/images/djvstock/djvstock1701/djvstock170102949/69084495-dise%C3%B1o-gr%C3%A1fico-del-ejemplo-del-vector-del-icono-del-perfil-ejecutivo-del-hombre-de-negocios.jpg",
       icon: <Users size={24} aria-hidden="true" />,
@@ -136,9 +136,7 @@ const Nosotros = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {values.map((value, index) => (
                 <AnimatedBorderCard key={index}>
-                  <div className="text-codecima-blue mb-4 p-3 bg-codecima-blue/10 rounded-lg inline-block">
-                    {value.icon}
-                  </div>
+                  
                   <h3 className="text-xl font-semibold text-white mb-2">{value.title}</h3>
                   <p className="text-gray-400">{value.description}</p>
                 </AnimatedBorderCard>

@@ -54,11 +54,12 @@ const Features = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-3">
-            <span className="text-white">Fortalece tu empresa con estas </span>
-            <span className="text-codecima-blue">Herramientas</span>
+            <span className="text-white"> Creamos tu sistema como </span>
+            <span className="text-codecima-blue">si fuera nuestro</span>
           </h2>
           <p className="text-gray-400">
-            Hechas para incrementar la productividad de tu empresa
+            Estas son solo algunas de las funciones que nuestros clientes han
+            integrado. Tú eliges las que mejor se ajustan a tu empresa.
           </p>
         </div>
 
@@ -84,6 +85,19 @@ const Features = () => {
               </span>
             </div>
           ))}
+        </div>
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://wa.me/593999406026?text=Hola%2C%20estoy%20interesado%20en%20desarrollar%20una%20soluci%C3%B3n%20personalizada%20para%20mi%20empresa.%20%C2%BFPodemos%20agendar%20una%20asesor%C3%ADa%20con%20su%20equipo%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Habla con un experto por WhatsApp"
+            className="mt-8"
+          >
+            <button className="px-6 py-3 rounded-xl bg-codecima-blue text-white font-medium hover:bg-codecima-blue/90 transition">
+              Habla con un experto →
+            </button>
+          </a>
         </div>
       </div>
     </section>
